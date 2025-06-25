@@ -1,0 +1,457 @@
+#header {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+}
+#header.visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease;
+}
+/* 全局设置及中文字体 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+}
+
+body {
+  background: linear-gradient(to right, rgba(110, 235, 235, 0.8) 0%, rgba(61, 179, 197, 0.8) 100%);
+  font-size: 16px;
+  color: #333;
+}
+
+/* 主体容器 */
+#main-container {
+  display: flex;
+  gap: 15px;
+  padding: 80px 15px 15px;
+  min-height: 100vh;
+}
+
+/* 左侧面板 */
+#left-panel {
+  width: 32%;
+  background: #EFF2F9;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.image-container {
+  width: 100%;
+  height: 260px;
+  background: #e0f7fa;
+  border: 2px dashed #0077b6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 119, 182, 0.3);
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* 置信度滑块 */
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 5px;
+  background: #ddd;
+  outline: none;
+  transition: background 0.3s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0077b6;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #0077b6;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+/* 开关按钮 */
+.openconf-container{
+  display: flex;
+  gap:20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .switch-slider {
+  background-color: #0077b6;
+}
+
+.switch input:checked + .switch-slider:before {
+  transform: translateX(26px);
+}
+
+/* 模型选择 */
+.radio-group {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+  color: #555;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #ffffff;
+  transition: background 0.3s, border-color 0.3s;
+  cursor: pointer;
+}
+
+.radio-item:hover {
+  background: #e9f5ff;
+  border-color: #0077b6;
+}
+
+.radio-item input[type="radio"] {
+  accent-color: #0077b6;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* 按钮样式 */
+.button-container {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.model-select {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.model-select:hover {
+  border-color: #0077b6;
+}
+
+.model-select:focus {
+  outline: none;
+  border-color: #0077b6;
+  box-shadow: 0 0 5px rgba(0, 119, 182, 0.5);
+}
+
+button {
+  flex: 1;
+  min-width: 80px;
+  padding: 12px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  background: #4CAF50;
+  transition: all 0.3s ease;
+}
+
+#detect-button { background: #48dada; }
+#reload-button { background:#48dada; }
+#save-button { background: #48dada; }
+#show-categories-btn{background: #48dada;max-width: 120px;}
+
+button:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 右侧面板 */
+#right-panel {
+  flex-grow: 1;
+  background: #EFF2F9;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* 检测结果展示 */
+.result-container {
+  width: 100%;
+  flex-grow: 1;
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.result-container .placeholder {
+  font-size: 18px;
+  color: #888;
+}
+
+.result-container img {
+  /* 设置图片的原始大小 */
+  width: 100%; /* 或具体尺寸，如 200px */
+  height: auto; /* 保持比例 */
+  /* 使用 scale 调整大小 */
+  transform: scale(0.8); /* 缩小到80% */
+  transform-origin: center; /* 以图片中心为缩放原点 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#file-input { display: none; }
+
+.data-container {
+  width: 100%;
+  max-width: 600px;
+  height: 260px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.data-summary {
+  padding: 8px;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.scrollable-form {
+  flex: 1;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* 模态框样式 */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px 30px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+/* 修复网格布局 */
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4列布局 */
+  gap: 15px 20px;
+  padding: 15px 0;
+}
+
+/* 确保分类列表正确显示 */
+.category-list {
+  display: none;
+}
+
+.category-list.active {
+  display: block;
+}
+
+/* 修复复选框项布局 */
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f8f9ff;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+/* 独立关闭按钮样式 */
+#close-modal-btn {
+  /* 重置按钮样式 */
+  all: initial;
+  /* 自定义样式 */
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 28px;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-family: Arial, sans-serif;
+}
+
+#close-modal-btn:hover {
+  color: #ff4444;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .checkbox-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .checkbox-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .modal-content {
+    padding: 30px 20px 20px;
+  }
+}

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遥感影像目标检测</title>
+  <style>
+    /* 全局设置及中文字体 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+    }
+    body {
+      background: #f0f4f8;
+      font-size: 16px;
+      color: #333;
+    }
+    /* 导航栏（保持不变） */
+    #header {
+      background: linear-gradient(135deg, #0066cc, #0099ff);
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border-radius: 0 0 12px 12px;
+    }
+    #header .title {
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    #header .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    #header .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    #header .nav-links a:hover {
+      background: #4c6ef5;
+      transform: translateY(-2px);
+    }
+    #header .auth-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    #header .auth-buttons a {
+      background-color: transparent;
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: 1px solid #fff;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    #header .auth-buttons a:hover {
+      background-color: #4c6ef5;
+      color: white;
+    }
+    /* 主体容器 */
+    #main-container {
+      display: flex;
+      gap: 25px;
+      padding: 100px 40px 30px;
+      min-height: 100vh;
+    }
+    /* 左侧面板 */
+    #left-panel {
+      width: 32%;
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: slideInLeft 0.6s ease-out;
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .image-container {
+      width: 100%;
+      height: 260px;
+      background: #e0f7fa;
+      border: 2px dashed #0077b6;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .image-container:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(0, 119, 182, 0.3);
+    }
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+    label {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    /* 滑块样式（置信度阈值） */
+    .slider-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      border-radius: 5px;
+      background: #ddd;
+      outline: none;
+      transition: background 0.3s;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #0077b6;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #0077b6;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+    /* 开关按钮样式（是否展示置信度） */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+    .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+    .switch input:checked + .switch-slider {
+      background-color: #0077b6;
+    }
+    .switch input:checked + .switch-slider:before {
+      transform: translateX(26px);
+    }
+    button {
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    #detect-button { background: #0077b6; }
+    #reload-button { background: #ff7043; }
+    #save-button { background: #2e7d32; }
+    button:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    /* 右侧面板 */
+    #right-panel {
+      flex-grow: 1;
+      background: #f7faff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: slideInRight 0.6s ease-out;
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    /* 目标类型选择区域（使用复选框） */
+    .target-selection {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .target-selection label.title {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+    .target-selection label.title:hover {
+      color: #0077b6;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      color: #555;
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+      transition: background 0.3s, border-color 0.3s;
+      cursor: pointer;
+    }
+    .checkbox-item:hover {
+      background: #e9f5ff;
+      border-color: #0077b6;
+    }
+    .checkbox-item input[type="checkbox"] {
+      accent-color: #0077b6;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    /* 检测结果展示区域 */
+    .result-container {
+      width: 100%;
+      flex-grow: 1;
+      background: #ffffff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      position: relative;
+      animation: fadeIn 0.6s ease-out;
+    }
+    .result-container .placeholder {
+      font-size: 18px;
+      color: #888;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    #file-input { display: none; }
+  </style>
+</head>
+<body>
+  <!-- 导航栏（保持不变） -->
+  <header id="header">
+    <div class="title">遥感影像目标检测</div>
+    <div class="nav-links">
+      <a href="#">首页</a>
+      <a href="#">服务</a>
+      <a href="#">论坛</a>
+      <a href="#">帮助</a>
+    </div>
+    <div class="auth-buttons">
+      <a href="#">登录</a>
+      <a href="#">注册</a>
+    </div>
+  </header>
+
+  <!-- 主体容器 -->
+  <div id="main-container">
+    <!-- 左侧面板：上传图片及参数设置 -->
+    <div id="left-panel">
+      <label>上传原始图片：</label>
+      <div class="image-container" onclick="openFileDialog()" id="original-image-container">
+        <input type="file" id="file-input" accept="image/*" onchange="displaySelectedImage()">
+        <div class="placeholder">点击上传图片</div>
+      </div>
+      <!-- 置信度阈值滑块 -->
+      <label for="conf-threshold">置信度阈值:</label>
+      <div class="slider-container">
+        <input type="range" id="conf-threshold" min="0" max="1" step="0.1" value="0.5">
+        <span id="conf-value">0.5</span>
+      </div>
+      <!-- 是否展示置信度开关 -->
+      <label>是否展示置信度:</label>
+      <label class="switch">
+        <input type="checkbox" id="show-confidence-switch">
+        <span class="switch-slider"></span>
+      </label>
+      <button id="detect-button">开始检测</button>
+      <button id="reload-button">重新上传</button>
+      <button id="save-button">保存检测结果</button>
+    </div>
+
+    <!-- 右侧面板：目标类型选择及检测结果展示 -->
+    <div id="right-panel">
+      <div class="target-selection">
+        <label class="title">选择目标类型：</label>
+        <div class="checkbox-group">
+          <label class="checkbox-item">
+            <input type="checkbox" id="select-all" value="all"> 全选
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" class="target-checkbox" value="airplane"> 飞机
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" class="target-checkbox" value="car"> 汽车
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" class="target-checkbox" value="building"> 建筑物
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" class="target-checkbox" value="tree"> 树木
+          </label>
+        </div>
+      </div>
+      <div class="result-container" id="detection-result">
+        <div class="placeholder">检测结果将在这里显示</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let fileInput = document.getElementById('file-input');
+    let originalImageContainer = document.getElementById('original-image-container');
+    let detectionResultContainer = document.getElementById('detection-result');
+    let detectButton = document.getElementById('detect-button');
+    let hasImage = false;
+    let uploadedImage = null;
+
+    // 更新滑块数值显示
+    const confThreshold = document.getElementById('conf-threshold');
+    const confValue = document.getElementById('conf-value');
+    confThreshold.addEventListener('input', function() {
+      confValue.textContent = confThreshold.value;
+    });
+
+    function openFileDialog() {
+      if (!hasImage) fileInput.click();
+    }
+
+    function displaySelectedImage() {
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          uploadedImage = e.target.result;
+          const img = new Image();
+          img.src = uploadedImage;
+          img.onload = function () {
+            originalImageContainer.innerHTML = '';
+            originalImageContainer.appendChild(img);
+            hasImage = true;
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // 全选功能
+    const selectAllCheckbox = document.getElementById('select-all');
+    selectAllCheckbox.addEventListener('change', function() {
+      const targetCheckboxes = document.querySelectorAll('.target-checkbox');
+      targetCheckboxes.forEach(cb => {
+        cb.checked = selectAllCheckbox.checked;
+      });
+    });
+    // 当任一单项取消时取消全选
+    const targetCheckboxes = document.querySelectorAll('.target-checkbox');
+    targetCheckboxes.forEach(cb => {
+      cb.addEventListener('change', function() {
+        if (!cb.checked) {
+          selectAllCheckbox.checked = false;
+        } else {
+          let allChecked = true;
+          targetCheckboxes.forEach(item => {
+            if (!item.checked) allChecked = false;
+          });
+          if (allChecked) selectAllCheckbox.checked = true;
+        }
+      });
+    });
+
+    async function performDetection() {
+      if (!hasImage) {
+        alert("请先上传图片！");
+        return;
+      }
+      const file = fileInput.files[0];
+      let formData = new FormData();
+      formData.append("file", file);
+      formData.append("confidence", confThreshold.value);
+      formData.append("show_confidence", document.getElementById('show-confidence-switch').checked);
+      
+      // 收集选中的目标类别
+      let selectedTargets = [];
+      // 如果全选被选中，则直接传 "all"
+      if(selectAllCheckbox.checked) {
+        selectedTargets = ["all"];
+      } else {
+        document.querySelectorAll('.target-checkbox').forEach(cb => {
+          if(cb.checked) selectedTargets.push(cb.value);
+        });
+      }
+      formData.append("target_type", JSON.stringify(selectedTargets));
+      
+      detectionResultContainer.innerHTML = "<p>正在检测，请稍候...</p>";
+      try {
+        let response = await fetch("http://127.0.0.1:5000/detect", {
+          method: "POST",
+          body: formData
+        });
+        let data = await response.json();
+        if (data.success) {
+          const detectedImg = new Image();
+          detectedImg.src = "data:image/png;base64," + data.detected_image;
+          detectedImg.onload = function () {
+            detectionResultContainer.innerHTML = '';
+            detectionResultContainer.appendChild(detectedImg);
+          };
+        } else {
+          detectionResultContainer.innerHTML = "<p>检测失败，请重试！</p>";
+        }
+      } catch (error) {
+        detectionResultContainer.innerHTML = "<p>请求失败，请检查后端服务是否运行！</p>";
+      }
+    }
+
+    detectButton.addEventListener('click', performDetection);
+
+    document.getElementById('reload-button').addEventListener('click', () => {
+      fileInput.value = '';
+      originalImageContainer.innerHTML = '<div class="placeholder">点击上传图片</div>';
+      detectionResultContainer.innerHTML = '<div class="placeholder">检测结果将在这里显示</div>';
+      hasImage = false;
+    });
+
+    document.getElementById('save-button').addEventListener('click', () => {
+      if (!hasImage) return alert('请先上传图片');
+      const img = detectionResultContainer.querySelector('img');
+      if (!img) return alert('检测结果还未生成');
+      const a = document.createElement('a');
+      a.href = img.src;
+      a.download = '检测结果.png';
+      a.click();
+    });
+  </script>
+</body>
+</html>

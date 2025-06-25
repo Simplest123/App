@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>SoftLand Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="static/img/favicon.png" rel="icon">
+    <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="static/vendor/aos/aos.css" rel="stylesheet">
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+	<!-- Link to Swiper's CSS -->
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<!-- Link to Swiper's JS -->
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Template Main CSS File -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/service_css.css" rel="stylesheet">
+  
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center" style="width: 1800px;">
+  
+  		<nav id="navbar" class="navbar" >
+  		  <ul>
+  		    <li><a href="index.html" style="font-size: 20px;padding-right: 25px;">首页</a></li>
+  		    <li class="dropdown"><a class="active" href="#"  style="font-size: 20px;padding-right: 25px;"><span>服务</span> <i class="bi bi-chevron-down"></i></a>
+  		      <ul style="width: 100px">
+  		        <li><a href="service_photo.html">图片检测</a></li>
+  		        <li><a href="service_video.html">视频检测</a></li>
+  		      </ul>
+  		    </li>
+  		    <li><a href="article.html" style="font-size: 20px;padding-right: 25px;">论坛</a></li>
+  		    <li><a href="help.html" style="font-size: 20px;">帮助</a></li>
+  		  </ul>
+  		  <i class="bi bi-list mobile-nav-toggle"></i>
+  		</nav><!-- .navbar -->
+  
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a href="#" style="font-size: 20px;" id="login-button">登录</a>
+              <!-- 用户头像占位符 -->
+  
+                <li id="user-avatar" class="dropdown" style="display: none">
+                <a href="#"  style="font-size: 20px;padding-right: 25px;"><img id="user-avatar_url" src="" alt="用户头像" style="width: 40px; height: 40px; border-radius: 50%;"><i class="bi bi-chevron-down"></i></a>
+  		      <ul style="width:100px ">
+  		        <li><a href="center.html" >个人中心</a></li>
+  		        <li><a id='exit' href="#">退出登录</a></li>
+  		      </ul>
+  		    </li>
+  
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+  
+    </div>
+  </header>
+
+   <!-- 修改后的保存项目模态框 -->
+   <div id="save-modal" class="modal">
+     <div class="modal-dialog">
+       <div class="modal-content">
+           <button type="button" class="btn-close" id="close-save-modal"></button>
+         <div class="modal-body">
+           <input type="text"
+                  id="project-name"
+                  class="form-control"
+                  placeholder="请输入项目名称">
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-secondary" id="cancel-save">取消</button>
+           <button type="button" class="btn btn-primary" id="confirm-save">确定</button>
+         </div>
+       </div>
+     </div>
+   </div>
+
+  <!-- 主体容器 -->
+  <div id="main-container">
+    <!-- 左侧面板：上传图片及参数设置 -->
+    <div id="left-panel">
+      <div class="image-container" onclick="openFileDialog()" id="original-image-container">
+        <input type="file" id="file-input" accept="image/*" onchange="displaySelectedImage()">
+        <div class="placeholder">点击上传图片</div>
+      </div>
+      <!-- 置信度滑块 -->
+      <label for="conf-threshold">置信度阈值:</label>
+      <div class="slider-container">
+        <input type="range" id="conf-threshold" min="0" max="1" step="0.1" value="0.5">
+        <span id="conf-value">0.5</span>
+      </div>
+      <!-- 是否展示置信度开关 -->
+      <div style="display: flex;">
+		  <div class="openconf-container">
+		    <label>置信度:</label>
+		    <label class="switch">
+		      <input type="checkbox" id="show-confidence-switch">
+		      <span class="switch-slider"></span>
+		    </label>
+		  </div>
+		  <div class="openconf-container" style="margin-left: 30px;">
+		    <label>类别名称:</label>
+		    <label class="switch">
+		      <input type="checkbox" id="show-class-switch">
+		      <span class="switch-slider"></span>
+		    </label>
+		  </div>
+		  <div class="openconf-container" style="margin-left: 30px;">
+		    <label>保存:</label>
+		    <label class="switch">
+		      <input type="checkbox" id="save-project-switch">
+		      <span class="switch-slider"></span>
+		    </label>
+		  </div>
+	  </div>
+      <!-- 场景选择模块 -->
+      <div class="radio-group" style="display: flex; align-items: center">
+        <label>场景:</label>
+        <label class="radio-item">
+          <input type="radio" name="tool1" value="nature"> 自然目标
+        </label>
+        <label class="radio-item">
+          <input type="radio" id='tiny' name="tool1" value="tiny"> 遥感小目标
+        </label>
+        <label class="radio-item">
+          <input type="radio" id='mutiple' name="tool1" value="multiscale" checked> 遥感多尺度目标
+        </label>
+		<label class="radio-item">
+          <input type="radio" name="tool2" value="lightweight" onclick="toggleRadio(this)"> 轻量化
+        </label>
+      </div>
+		<!-- 模型选择（下拉菜单） -->
+      <div class="select-group" style="display: flex; align-items: center; gap: 14px;">
+        <label>模型大小:</label>
+        <label class="radio-item">
+          <input type="radio" id="small" name="scale" value="S" checked> 小
+        </label>
+        <label class="radio-item">
+          <input type="radio" id="medium" name="scale" value="M"> 中
+        </label>
+        <label class="radio-item">
+          <input type="radio" id="large" name="scale" value="L"> 大
+        </label>
+      </div>
+
+		<!-- 目标类别选择按钮 -->
+	  <div class="select-group" style="display: flex; align-items: center; gap: 14px;">
+		  <label>类别:</label>
+		  <div class="target-selection" style="display: flex; align-items: center;">
+		    <button id="show-categories-btn" style="padding: 6px 12px;font-size: 14px;color: #333;background-color: #fff;cursor: pointer;transition: border-color 0.3s ease;">待检测目标类别选择</button>
+		  </div>
+	  </div>
+      <!-- 数据展示区域 -->
+      <div class="data-container">
+        <div class="data-summary" style="padding: 10px">
+          <span>总目标数: <strong id="total-targets"></strong></span>
+          <span>检测用时: <strong id="detection-time">&nbsp;&nbsp;&nbsp;&nbsp;</strong></span>
+        </div>
+        <div class="scrollable-form">
+          <table>
+            <thead>
+              <tr>
+                <th>序号</th>
+                <th>类别</th>
+                <th>坐标</th>
+                <th>置信度</th>
+              </tr>
+            </thead>
+            <tbody id="form-content">
+              <!-- 动态数据将插入到这里 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="button-container" style="gap: 20px">
+        <button id="detect-button">检测</button>
+      </div>
+    </div>
+
+    <!-- 右侧面板：检测结果展示 -->
+    <div id="right-panel">
+    
+      <!-- 模态框 -->
+	  <div id="category-modal" class="modal">
+	    <div class="modal-content">
+	      <button id="close-modal-btn" class="close-btn">×</button>
+	      
+	      <!-- 自然目标 -->
+	      <div class="category-list active" data-scene="nature">
+	        <div class="checkbox-grid">
+	          <label class="checkbox-item">
+	          		      <input type="checkbox" id="select-all_1" value="all"> 全选
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="person"/> person
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bicycle"/> bicycle
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="car"/> car
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="motorcycle"/> motorcycle
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="airplane"/> airplane
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bus"/> bus
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="train"/> train
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="truck"/> truck
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="boat"/> boat
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="traffic light"/> traffic light
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="fire hydrant"/> fire hydrant
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="stop sign"/> stop sign
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="parking meter"/> parking meter
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bench"/> bench
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bird"/> bird
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="cat"/> cat
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="dog"/> dog
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="horse"/> horse
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="sheep"/> sheep
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="cow"/> cow
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="elephant"/> elephant
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bear"/> bear
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="zebra"/> zebra
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="giraffe"/> giraffe
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="backpack"/> backpack
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="umbrella"/> umbrella
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="handbag"/> handbag
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="tie"/> tie
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="suitcase"/> suitcase
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="frisbee"/> frisbee
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="skis"/> skis
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="snowboard"/> snowboard
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="sports ball"/> sports ball
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="kite"/> kite
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="baseball bat"/> baseball bat
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="baseball glove"/> baseball glove
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="skateboard"/> skateboard
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="surfboard"/> surfboard
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="tennis racket"/> tennis racket
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bottle"/> bottle
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="wine glass"/> wine glass
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="cup"/> cup
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="fork"/> fork
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="knife"/> knife
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="spoon"/> spoon
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bowl"/> bowl
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="banana"/> banana
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="apple"/> apple
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="sandwich"/> sandwich
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="orange"/> orange
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="broccoli"/> broccoli
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="carrot"/> carrot
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="hot dog"/> hot dog
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="pizza"/> pizza
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="donut"/> donut
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="cake"/> cake
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="chair"/> chair
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="couch"/> couch
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="potted plant"/> potted plant
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bed"/> bed
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="dining table"/> dining table
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="toilet"/> toilet
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="tv"/> tv
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="laptop"/> laptop
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="mouse"/> mouse
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="remote"/> remote
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="keyboard"/> keyboard
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="cell phone"/> cell phone
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="microwave"/> microwave
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="oven"/> oven
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="toaster"/> toaster
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="sink"/> sink
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="refrigerator"/> refrigerator
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="book"/> book
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="clock"/> clock
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="vase"/> vase
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="scissors"/> scissors
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="teddy bear"/> teddy bear
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="hair drier"/> hair drier
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="toothbrush"/> toothbrush
+	          		    </label>
+	          <!-- 其他复选框项... -->
+	        </div>
+	      </div>
+	  
+	      <!-- 遥感小目标 -->
+	      <div class="category-list" data-scene="tiny">
+	        <div class="checkbox-grid">
+	          <label class="checkbox-item">
+	          		      <input type="checkbox" id="select-all_2" value="all"> 全选
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="harbor"/> harbor
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="ship"/> ship
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="storagetank"/> storagetank
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="chimney"/> chimney
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="dam"/> dam
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="trainstation"/> trainstation
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="airport"/> airport
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="Expressway-Service-area"/> Expressway-Service-area
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="airplane"/> airplane
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="baseballfield"/> baseballfield
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="Expressway-toll-station"/> Expressway-toll-station
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="vehicle"/> vehicle
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="golffield"/> golffield
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="bridge"/> bridge
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="groundtrackfield"/> groundtrackfield
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="overpass"/> overpass
+	          		    </label>
+	          		    <label class="checkbox-item">
+	          		      <input type="checkbox" class="target-checkbox" value="windmill"/> windmill
+	          		    </label>
+	          			<label class="checkbox-item">
+	          			  <input type="checkbox" class="target-checkbox" value="tenniscourt"/> tenniscourt
+	          			</label>
+	          			<label class="checkbox-item">
+	          			  <input type="checkbox" class="target-checkbox" value="stadium"/> stadium
+	          			</label>
+	          <!-- 其他复选框项... -->
+	        </div>
+	      </div>
+	  
+	      <!-- 多尺度目标 -->
+	      <div class="category-list" data-scene="multiscale">
+	        <div class="checkbox-grid">
+	          <label class="checkbox-item">
+				  <input type="checkbox" id="select-all_2" value="all"> 全选
+			  </label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="harbor"/> harbor
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="ship"/> ship
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="storagetank"/> storagetank
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="chimney"/> chimney
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="dam"/> dam
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="trainstation"/> trainstation
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="airport"/> airport
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="Expressway-Service-area"/> Expressway-Service-area
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="airplane"/> airplane
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="baseballfield"/> baseballfield
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="Expressway-toll-station"/> Expressway-toll-station
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="vehicle"/> vehicle
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="golffield"/> golffield
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="bridge"/> bridge
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="groundtrackfield"/> groundtrackfield
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="overpass"/> overpass
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="windmill"/> windmill
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="tenniscourt"/> tenniscourt
+				</label>
+				<label class="checkbox-item">
+					<input type="checkbox" class="target-checkbox" value="stadium"/> stadium
+				</label>
+	          <!-- 其他复选框项... -->
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+	  
+      <div class="result-container" id="detection-result">
+        <!-- 检测结果显示区域 -->
+      </div>
+    </div>
+
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	  <script src="static/js/main.js"></script>
+	  <script src="static/js/service_script.js"></script>
+</body>
+</html>

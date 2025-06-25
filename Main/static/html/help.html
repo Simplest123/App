@@ -1,0 +1,598 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SoftLand Bootstrap Template - Pricing</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.png" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/css/style.css" rel="stylesheet">
+  <style>
+      .step-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        margin-bottom: 30px;
+        /* 新增高度控制 */
+        height: 100%;
+        min-height: 320px; /* 根据内容量设置合理最小高度 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .step-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: white;
+        /* 新增图标固定尺寸 */
+        flex-shrink: 0;
+      }
+
+      /* 新增文本容器控制 */
+      .step-card h3 {
+        margin: 0 0 1rem;
+        flex-shrink: 0;
+      }
+
+      .step-card p {
+        margin: 0;
+        flex-grow: 1; /* 文本区域自动填充剩余空间 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1.5;
+      }
+      .accordion-button {
+        font-weight: 500;
+        background: rgba(0,123,255,0.05);
+      }
+      .support-channels {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      }
+      .channel-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+      }
+      .channel-item i {
+        font-size: 1.8rem;
+        margin-right: 1rem;
+        color: #007bff;
+      }
+      .documentation-box {
+        background: white;
+        padding: 1.6rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      }
+	  /* 紧凑模式自定义样式 */
+	  .compact-list a {
+	    line-height: 1.3;  /* 行高从1.5+调整为1.3 */
+	    font-size: 0.95rem;  /* 字号略微缩小 */
+	  }
+
+	  .compact-list li:not(:last-child) {
+	    margin-bottom: 0.5rem !important;  /* 间距从1rem+调整为0.5rem */
+	  }
+	  /* 优化文本域样式 */
+	  textarea.form-control {
+	    min-height: 150px;
+	    resize: vertical; /* 允许垂直调整 */
+	  }
+	  .icon-wrapper {
+	    width: 56px;
+	    height: 56px;
+	    flex-shrink: 0;
+	  }
+	  .support-form {
+	    background: #fff;
+	    border-radius: 1rem;
+	    position: relative;
+	    z-index: 1;
+	  }
+	  .support-form::before {
+	    content: '';
+	    position: absolute;
+	    top: -10px;
+	    left: -10px;
+	    right: -10px;
+	    bottom: -10px;
+	    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+	    z-index: -1;
+	    border-radius: 1.5rem;
+	  }
+    </style>
+
+</head>
+
+<body>
+
+ <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center" style="width: 1800px;">
+
+		<nav id="navbar" class="navbar" >
+		  <ul>
+		    <li><a class="active" href="index.html" style="font-size: 20px;padding-right: 25px;">首页</a></li>
+		    <li class="dropdown"><a href="#"  style="font-size: 20px;"><span>服务</span> <i class="bi bi-chevron-down"></i></a>
+		      <ul style="width: 100px">
+		        <li><a href="service_photo.html">图片检测</a></li>
+		        <li><a href="service_video.html">视频检测</a></li>
+		      </ul>
+		    </li>
+		    <li><a href="article.html"style="font-size: 20px;padding-right: 25px;">论坛</a></li>
+		    <li><a href="help.html" style="font-size: 20px;">帮助</a></li>
+		  </ul>
+		  <i class="bi bi-list mobile-nav-toggle"></i>
+		</nav><!-- .navbar -->
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a href="#" style="font-size: 20px;" id="login-button">登录</a>
+              <!-- 用户头像占位符 -->
+
+                <li id="user-avatar" class="dropdown" style="display: none">
+                <a href="#"  style="font-size: 20px;padding-right: 25px;"><img id="user-avatar_url" src="" alt="用户头像" style="width: 50px; height: 50px; border-radius: 50%;"><i class="bi bi-chevron-down"></i></a>
+		      <ul style="width:100px ">
+		        <li><a href="center.html" >个人中心</a></li>
+		        <li><a id='exit' href="#">退出登录</a></li>
+		      </ul>
+		    </li>
+
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= FeatPricingures Section ======= -->
+    <div class="hero-section inner-page">
+      <div class="wave">
+
+        <svg width="1920px" height="265px" viewBox="0 0 1920 265" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+              <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,667 L1017.15166,667 L0,667 L0,439.134243 Z" id="Path"></path>
+            </g>
+          </g>
+        </svg>
+
+      </div>
+
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12">
+            <div class="row justify-content-center">
+              <div class="col-md-7 text-center hero-text">
+                <h1 data-aos="fade-up" data-aos-delay="">Help</h1>
+                <p class="mb-5" data-aos="fade-up" data-aos-delay="100">获取系统使用指南、常见问题解答和技术支持</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+	<!-- ======= 快速入门指南 Section ======= -->
+	    <section class="section">
+	        <div class="container">
+	            <div class="row justify-content-center">
+	                <div class="col-md-8 text-center mb-5">
+	                    <h2 class="section-heading">快速入门指南</h2>
+	                    <p>只需四步完成遥感影像目标检测</p>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <!-- 第一步 -->
+	                <div class="col-lg-3 col-md-6" data-aos="fade-up">
+	                    <div class="step-card">
+	                        <div class="step-icon bg-primary">
+	                            <i class="bi bi-cloud-upload"></i>
+	                        </div>
+	                        <h3>上传数据</h3>
+	                        <p>支持TIFF/JPEG/PNG格式，单文件最大2GB</p>
+	                    </div>
+	                </div>
+
+	                <!-- 第二步 -->
+	                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+	                    <div class="step-card">
+	                        <div class="step-icon bg-success">
+	                            <i class="bi bi-gear"></i>
+	                        </div>
+	                        <h3>数据处理</h3>
+	                        <p>自动预处理，包括去噪和图像增强</p>
+	                    </div>
+	                </div>
+
+	                <!-- 第三步 -->
+	                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+	                    <div class="step-card">
+	                        <div class="step-icon bg-warning">
+	                            <i class="bi bi-cpu"></i>
+	                        </div>
+	                        <h3>模型检测</h3>
+	                        <p>使用深度学习模型识别遥感影像中的目标</p>
+	                    </div>
+	                </div>
+
+	                <!-- 第四步 -->
+	                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+	                    <div class="step-card">
+	                        <div class="step-icon bg-danger">
+	                            <i class="bi bi-file-earmark-bar-graph"></i>
+	                        </div>
+	                        <h3>获取结果</h3>
+	                        <p>可视化检测结果并支持多种格式导出</p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+
+	    <!-- ======= 常见问题 Section ======= -->
+	    <section class="section bg-light">
+	      <div class="container">
+	        <h2 class="text-center mb-5">常见问题解答</h2>
+	        <div class="accordion" id="faqAccordion">
+	          <div class="accordion-item">
+	            <h3 class="accordion-header">
+	              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+	                支持哪些遥感数据格式？
+	              </button>
+	            </h3>
+	            <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+	              <div class="accordion-body">
+	                目前支持TIFF/GeoTIFF/JPEG2000格式，建议使用WGS84坐标系...
+	              </div>
+	            </div>
+	          </div>
+	          <!-- 添加更多问题 -->
+	        </div>
+	      </div>
+	    </section>
+
+	    <!-- ======= 技术支持 Section ======= -->
+	    <section class="section">
+	      <div class="container">
+	        <div class="row align-items-center">
+	          <!-- 技术支持模块 -->
+	          <div class="col-md-6 mb-4 mb-md-0"> <!-- 添加间距控制 -->
+	            <div class="support-channels">
+	              <h2 class="mb-4">实时技术支持</h2>
+	              <div class="channel-item">
+	                <div class="d-flex align-items-center mb-3">
+	                  <i class="bi bi-chat-dots fs-3 me-3"></i>
+	                  <div>
+	                    <h4 class="mb-1">在线聊天</h4>
+	                    <p class="text-muted mb-0">周一至周五 9:00-18:00 (GMT+8)</p>
+	                  </div>
+	                </div>
+	                <!-- 其他支持渠道 -->
+	                <div class="channel-item mt-auto"> <!-- 底部对齐 -->
+	                  <div class="d-flex align-items-center">
+	                    <i class="bi bi-telephone fs-3 me-3"></i>
+	                    <div>
+	                      <h4 class="mb-1">电话支持</h4>
+	                      <p class="text-muted mb-0">400-123-4567</p>
+	                    </div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+
+	          <!-- 文档资源模块 -->
+	          <div class="col-md-6">
+	            <div class="documentation-box">
+	              <div class="d-flex align-items-center mb-3">  <!-- 标题下间距从mb-4改为mb-3 -->
+	                <i class="bi bi-file-earmark-text fs-3 me-2"></i>  <!-- 图标间距从me-3改为me-2 -->
+	                <h3 class="mb-0 fs-5">文档资源</h3>  <!-- 标题字号缩小 -->
+	              </div>
+
+	              <ul class="list-unstyled compact-list">  <!-- 添加紧凑列表类 -->
+	                <li class="mb-2">  <!-- 列表项间距从mb-3改为mb-2 -->
+	                  <a href="#" class="d-block p-2 rounded hover-shadow lh-sm">  <!-- 内边距从p-3改为p-2 -->
+	                    <i class="bi bi-download me-2"></i>
+	                    API开发文档下载
+	                  </a>
+	                </li>
+	                <li class="mb-2">
+	                  <a href="#" class="d-block p-2 rounded hover-shadow lh-sm">
+	                    <i class="bi bi-journal me-2"></i>
+	                    数据处理规范手册
+	                  </a>
+	                </li>
+	                <li>
+	                  <a href="#" class="d-block p-2 rounded hover-shadow lh-sm">
+	                    <i class="bi bi-file-pdf me-2"></i>
+	                    精度验证白皮书
+	                  </a>
+	                </li>
+	              </ul>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </section>
+
+	    <!-- ======= 联系表单 Section ======= -->
+	    <section class="section bg-light">
+	      <div class="container">
+	        <div class="row g-5"> <!-- 添加列间距 -->
+	          <!-- 联系信息区块 -->
+	          <div class="col-md-6">
+	            <div class="pe-lg-4"> <!-- 右侧内边距 -->
+	              <h2 class="display-6 mb-4">需要更多帮助？</h2>
+	              <p class="lead text-muted mb-5">我们的专家团队将在24小时内回复您</p>
+
+	              <div class="vstack gap-4"> <!-- 垂直堆叠布局 -->
+	                <!-- 电话支持 -->
+	                <div class="d-flex align-items-center">
+	                  <div class="icon-wrapper bg-primary text-white rounded-circle p-3 me-4">
+	                    <i class="bi bi-telephone fs-4"></i>
+	                  </div>
+	                  <div>
+	                    <h4 class="h5 mb-1">技术支持热线</h4>
+	                    <p class="mb-0 text-primary fw-bold">+86 400-123-4567</p>
+	                  </div>
+	                </div>
+
+	                <!-- 邮件支持 -->
+	                <div class="d-flex align-items-center" style="margin-top: 50px;margin-bottom: 50px;">
+	                  <div class="icon-wrapper bg-success text-white rounded-circle p-3 me-4">
+	                    <i class="bi bi-envelope fs-4"></i>
+	                  </div>
+	                  <div>
+	                    <h4 class="h5 mb-1">电子邮件支持</h4>
+	                    <p class="mb-0 text-success fw-bold">support@remotesensing.ai</p>
+	                  </div>
+	                </div>
+
+	                <!-- 新增工作时间 -->
+	                <div class="d-flex align-items-center mt-4">
+	                  <div class="icon-wrapper bg-warning text-white rounded-circle p-3 me-4">
+	                    <i class="bi bi-clock-history fs-4"></i>
+	                  </div>
+	                  <div>
+	                    <h4 class="h5 mb-1">服务时间</h4>
+	                    <p class="mb-0">周一至周五 9:00-18:00<br>（国家法定节假日除外）</p>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+
+	          <!-- 表单区块 -->
+	          <div class="col-md-6">
+	            <div class="support-form p-4 p-lg-5 shadow-lg"> <!-- 增强卡片效果 -->
+	              <form>
+	                <!-- 问题类型 -->
+	                <div class="mb-4">
+	                  <label class="form-label text-secondary fw-bold mb-2">问题类型</label>
+	                  <select class="form-select form-select-lg">
+	                    <option>数据上传问题</option>
+	                    <option>检测结果疑问</option>
+	                    <option>账户问题</option>
+	                    <option>其他</option>
+	                  </select>
+	                </div>
+
+	                <!-- 问题描述 -->
+	                <div class="mb-4">
+	                  <label class="form-label text-secondary fw-bold mb-2">问题描述</label>
+	                  <textarea
+	                    class="form-control"
+	                    rows="5"
+	                    style="min-height: 150px;"
+	                  ></textarea>
+	                </div>
+
+	                <!-- 联系信息 -->
+	                <div class="row g-3 mb-4"> <!-- 网格布局 -->
+	                  <div class="col-md-6">
+	                    <label class="form-label text-secondary fw-bold mb-2">联系邮箱</label>
+	                    <input type="email" class="form-control">
+	                  </div>
+	                  <div class="col-md-6">
+	                    <label class="form-label text-secondary fw-bold mb-2">联系电话</label>
+	                    <input type="tel" class="form-control">
+	                  </div>
+	                </div>
+
+	                <!-- 提交按钮 -->
+	                <div class="d-grid">
+	                  <button type="submit" class="btn btn-primary btn-lg py-3">
+	                    <i class="bi bi-send-fill me-2"></i> 提交问题
+	                  </button>
+	                </div>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </section>
+
+		<section class="section">
+		  <div class="container">
+
+		    <div class="row justify-content-center text-center">
+		      <div class="col-md-7 mb-5">
+		        <h2 class="section-heading">Choose A Plan</h2>
+		        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere illum obcaecati inventore velit laborum earum.</p>
+		      </div>
+		    </div>
+		    <div class="row align-items-stretch">
+
+		      <div class="col-lg-4 mb-4 mb-lg-0">
+		        <div class="pricing h-100 text-center">
+		          <span>&nbsp;</span>
+		          <h3>Basic</h3>
+		          <ul class="list-unstyled">
+		            <li>Create up to 5 forms</li>
+		            <li>Generate 100 monthly reports</li>
+		          </ul>
+		          <div class="price-cta">
+		            <strong class="price">Free</strong>
+		            <p><a href="#" class="btn btn-white">Choose Plan</a></p>
+		          </div>
+		        </div>
+		      </div>
+		      <div class="col-lg-4 mb-4 mb-lg-0">
+		        <div class="pricing h-100 text-center popular">
+		          <span class="popularity">Most Popular</span>
+		          <h3>Professional</h3>
+		          <ul class="list-unstyled">
+		            <li>Create up to 20 forms</li>
+		            <li>Generate 2500 monthly reports</li>
+		            <li>Manage a team of up to 5 people</li>
+		          </ul>
+		          <div class="price-cta">
+		            <strong class="price">$9.95/month</strong>
+		            <p><a href="#" class="btn btn-white">Choose Plan</a></p>
+		          </div>
+		        </div>
+		      </div>
+		      <div class="col-lg-4 mb-4 mb-lg-0">
+		        <div class="pricing h-100 text-center">
+		          <span class="popularity">Best Value</span>
+		          <h3>Ultimate</h3>
+		          <ul class="list-unstyled">
+		            <li>Create up to 20 forms</li>
+		            <li>Generate 2500 monthly reports</li>
+		            <li>Manage a team of up to 5 people</li>
+		          </ul>
+		          <div class="price-cta">
+		            <strong class="price">$199.95/month</strong>
+		            <p><a href="#" class="btn btn-white">Choose Plan</a></p>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </div>
+		</section>
+
+    <!-- ======= CTA Section ======= -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 me-auto text-center text-md-start mb-5 mb-md-0">
+            <h2>Starts Publishing Your Apps</h2>
+          </div>
+          <div class="col-md-5 text-center text-md-end">
+            <p><a href="#" class="btn d-inline-flex align-items-center"><i class="bx bxl-apple"></i><span>App store</span></a> <a href="#" class="btn d-inline-flex align-items-center"><i class="bx bxl-play-store"></i><span>Google play</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End CTA Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h3>About SoftLand</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
+            dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
+          <p class="social">
+            <a href="#"><span class="bi bi-twitter"></span></a>
+            <a href="#"><span class="bi bi-facebook"></span></a>
+            <a href="#"><span class="bi bi-instagram"></span></a>
+            <a href="#"><span class="bi bi-linkedin"></span></a>
+          </p>
+        </div>
+        <div class="col-md-7 ms-auto">
+          <div class="row site-section pt-0">
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Navigation</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Services</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Collaboration</a></li>
+                <li><a href="#">Todos</a></li>
+                <li><a href="#">Events</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Downloads</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Get from the App Store</a></li>
+                <li><a href="#">Get from the Play Store</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center text-center">
+        <div class="col-md-7">
+          <p class="copyright">&copy; Copyright SoftLand. All Rights Reserved</p>
+
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/aos/aos.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="static/js/main.js"></script>
+</body>
+
+</html>

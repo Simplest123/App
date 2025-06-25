@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  
+    <title>SoftLand Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+  
+    <!-- Favicons -->
+    <link href="static/img/favicon.png" rel="icon">
+    <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
+  
+    <!-- Vendor CSS Files -->
+    <link href="static/vendor/aos/aos.css" rel="stylesheet">
+    <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+  
+    <!-- Template Main CSS File -->
+    <link href="static/css/style.css" rel="stylesheet">
+    <link href="static/css/login_style.css" rel="stylesheet" />
+  <style>
+      /* 贡献者头像样式 */
+      .contributor-avatar {
+        text-align: center;
+        padding: 5px; /* 增加内边距，使头像更紧凑 */
+      }
+      .contributor-avatar img {
+        width: 80px; /* 进一步缩小头像尺寸 */
+        height: 80px;
+        object-fit: cover;
+        border: 2px solid #fff; /* 减少边框宽度 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 减少阴影强度 */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .contributor-avatar img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 悬停时增加阴影 */
+      }
+
+      * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+          }
+
+          body {
+            background: #f7f8fa;
+            font-size: 16px;
+            color: #333;
+            background-color: #f8f9fa;
+          }
+
+          /* feature 模块样式 */
+          .feature-1 h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0077b6;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+          }
+
+          .feature-1 p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #333333;
+            margin-bottom: 20px;
+            padding: 0 20px;
+            transition: color 0.3s ease;
+          }
+
+          .wrap-icon {
+            display: inline-block;
+            background-color: #0077b6;
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+          }
+
+          .wrap-icon:hover {
+            background-color: #005f8f;
+            transform: scale(1.1);
+          }
+
+          .wrap-icon:hover i {
+            color: #ffffff;
+          }
+
+          .feature-1:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+
+          @media screen and (max-width: 768px) {
+            .feature-1 h3 {
+              font-size: 1.25rem;
+            }
+
+            .feature-1 p {
+              font-size: 0.95rem;
+              padding: 0 10px;
+            }
+
+            .wrap-icon {
+              width: 60px;
+              height: 60px;
+            }
+          }
+	  </style>
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center" style="width: 1800px;">
+
+		<nav id="navbar" class="navbar" >
+		  <ul>
+		    <li><a class="active" href="index.html" style="font-size: 20px;padding-right: 25px;">首页</a></li>
+		    <li class="dropdown"><a href="#"  style="font-size: 20px;"><span>服务</span> <i class="bi bi-chevron-down"></i></a>
+		      <ul style="width: 100px">
+		        <li><a href="service_photo.html">图片检测</a></li>
+		        <li><a href="service_video.html">视频检测</a></li>
+		      </ul>
+		    </li>
+		    <li><a href="article.html"style="font-size: 20px;padding-right: 25px;">论坛</a></li>
+		    <li><a href="help.html" style="font-size: 20px;">帮助</a></li>
+		  </ul>
+		  <i class="bi bi-list mobile-nav-toggle"></i>
+		</nav><!-- .navbar -->
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li>
+              <a href="#" style="font-size: 20px;" id="login-button">登录</a>
+              <!-- 用户头像占位符 -->
+
+                <li id="user-avatar" class="dropdown" style="display: none">
+                <a href="#"  style="font-size: 20px;padding-right: 25px;"><img id="user-avatar_url" src="" alt="用户头像" style="width: 50px; height: 50px; border-radius: 50%;"><i class="bi bi-chevron-down"></i></a>
+		      <ul style="width:100px ">
+		        <li><a href="center.html" >个人中心</a></li>
+		        <li><a id='exit' href="#">退出登录</a></li>
+		      </ul>
+		    </li>
+
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section class="hero-section" id="hero" style="height: 1000px;">
+
+    <div class="wave">
+
+      <svg width="100%" height="355px" viewBox="0 0 1920 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+            <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+
+    <div class="container" style="width: 1700px">
+      <div class="row align-items-center"  >
+        <div class="col-12 hero-text-image">
+          <div class="row">
+            <div class="col-lg-8 text-center text-lg-start" style="width: 1020px;">
+              <h1 data-aos="fade-right" style="font-family: 仿宋; font-size: 80px;height: 70px;">遥感新视界，精准领航</h1>
+             <p class="mb-5" data-aos="fade-right" data-aos-delay="100" style="font-family: 'Times New Roman', Times, serif;opacity: 0.9;padding-left: 118px;font-size: 22px; ">A New Vision in Remote Sensing: Precision Leadership in Object Detection.</p>
+              <!-- <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="index (2).html" class="btn btn-outline-white">Get started</a></p> -->
+            </div>
+            <div class="col-lg-4 iphone-wrap">
+              <img src="static/img/index_detect2.jpg" alt="Image" class="phone-1" data-aos="fade-right" style="width: 400px;height: 450px;">
+              <img src="static/img/index_detect1.jpg" alt="Image" class="phone-2" data-aos="fade-right" style="width: 400px;height: 450px;" data-aos-delay="200">
+            </div>
+          </div>
+        </div>
+		<!-- <div class="row justify-content-center text-center mb-5">
+		  <div class="col-md-5" data-aos="fade-up">
+		    <h2 class="section-heading">Save your time to using SoftLand</h2>
+		  </div>
+		</div> -->
+
+		<div class="row">
+		  <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
+		    <div class="feature-1 text-center">
+		      <div class="wrap-icon icon-1">
+		        <i class="bi bi-people"></i>
+		      </div>
+		      <h3 class="mb-3">小目标检测</h3>
+		      <p>多尺度特征增强和先验辅助驱动的深度学习框架，实现高效低对比度、扰乱背景下的遥感小目标检测。</p>
+		    </div>
+		  </div>
+		  <div class="col-md-4" data-aos="fade-up" data-aos-delay="100" >
+		    <div class="feature-1 text-center">
+		      <div class="wrap-icon icon-1">
+		        <i class="bi bi-brightness-high"></i>
+		      </div>
+		      <h3 class="mb-3">多尺度目标检测</h3>
+		      <p>注意力机制驱动的局部-全局特征互补与交互，助力遥感多尺度目标检测的跨步和飞跃。</p>
+		    </div>
+		  </div>
+		  <div class="col-md-4" data-aos="fade-up" data-aos-delay="200" >
+		    <div class="feature-1 text-center">
+		      <div class="wrap-icon icon-1">
+		        <i class="bi bi-bar-chart"></i>
+		      </div>
+		      <h3 class="mb-3">轻量化</h3>
+		      <p>混合量化和特征模仿知识蒸馏助力实现实时遥感数据应用，赋能高新科技。</p>
+		    </div>
+		  </div>
+		</div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+    <section class="section" >
+
+      <div class="container">
+        <!-- 原内容 -->
+        <div class="row justify-content-center text-center mb-5" data-aos="fade">
+            <div class="col-md-6 mb-5" style="width: 1200px;">
+                <!-- 直接嵌入视频，并设置自动播放 -->
+                <video id="inlineVideo" controls autoplay muted width="100%">
+                    <source src="static/img/show.mp4" type="video/mp4">
+                    您的浏览器不支持视频播放。
+                </video>
+            </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md-4">
+            <div class="step">
+              <span class="number">01</span>
+              <h3>注册账号</h3>
+              <p>使用手机号和电子邮箱快速注册，开启遥感影像目标检测服务。</p>
+            </div>
+            </div>
+            <div class="col-md-4">
+              <div class="step">
+                <span class="number">02</span>
+                <h3>上传影像</h3>
+                <p>上传遥感影像数据(图片、视频)，体验遥感影像的独特魅力。</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="step">
+                <span class="number">03</span>
+                <h3>数据分析</h3>
+                <p>获取可视化检测结果（目标坐标、类别以及可信度等），支持多场景、多模型。</p>
+              </div>
+            </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4 me-auto">
+            <h2 class="mb-4">小目标检测</h2>
+            <p class="mb-4">遥感影像的应用以拍摄大范围观测场景来获取信息为主要目的，图像的尺寸相较于一般图像会更加庞大。此外，遥感拍摄的场景多为复杂的室外场景，常面临曝光、阴影、背景遮挡和干扰等问题。依上，遥感图像中的小目标在整张图像中的所占面积极小，分辨率低，且常遭受背景噪声的干扰。</p>
+            <p><a href="#" class="btn btn-primary">Read More</a></p>
+          </div>
+            <div class="col-md-6 position-relative" data-aos="fade-right" style="min-height: 530px;"> <!-- 增加容器高度 -->
+                  <!-- 主图 -->
+                  <img src="static/img/detect2.jpg" alt="Image"
+                       class="img-fluid position-absolute"
+                       style="width: 100%;
+                              left: -50px;
+                              top: 40px;  <!-- 上间距增加至40px -->
+                              z-index: 2;
+                              box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+
+                  <!-- 背景图 -->
+                  <img src="static/img/detect2.jpg" alt="Image"
+                       class="img-fluid position-absolute"
+                       style="width: 100%;
+                              left: 50px;
+                              top: 150px;  <!-- 上间距增加至80px -->
+                              z-index: 1;
+                              filter: brightness(0.95);
+                              box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4 ms-auto order-2">
+            <h2 class="mb-4">多尺度目标检测</h2>
+            <p class="mb-4">面向遥感影像的目标检测，常为多类别、多目标的复杂情形检测。众多的检测类别中，不乏有上述提及的小型检测目标，如人、汽车、小船等，但同时也存在大型检测目标，如飞机、篮球场、海港、服务站等。据上，遥感场景的目标呈现巨大尺度变化，包括类内尺度变化、类间尺度变化以及不同场景下的形态变化、目标旋转变化等。</p>
+            <p><a href="#" class="btn btn-primary">Read More</a></p>
+          </div>
+          <div class="col-md-6" data-aos="fade-right">
+            <img src="static/img/undraw_svg_3.svg" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+	
+	<section class="section">
+	  <div class="container">
+	    <div class="row align-items-center">
+	      <div class="col-md-4 me-auto">
+	        <h2 class="mb-4">轻量化</h2>
+	        <p class="mb-4">遥感影像的独特特点决定了其多场景可应用的前景，如国防安全方面的勘探和检测，城市的交通管理和布局等，但总体来说，各应用场景均对实时性有较高要求。</p>
+	        <p><a href="#" class="btn btn-primary">Read More</a></p>
+	      </div>
+	      <div class="col-md-6" data-aos="fade-left">
+	        <img src="static/img/undraw_svg_2.svg" alt="Image" class="img-fluid">
+	      </div>
+	    </div>
+	  </div>
+	</section>
+
+    <!-- ======= 用户评价部分 ======= -->
+    <section class="section">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-4">
+            <h2 class="section-heading">用户评价</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center text-center">
+          <div class="col-md-7">
+            <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper">
+
+                <!-- 评价 1 -->
+                <div class="swiper-slide">
+                  <div class="review text-center">
+                    <p class="stars">
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill muted"></span>
+                    </p>
+                    <h3>非常好用的工具！</h3>
+                    <blockquote>
+                      <p>这个遥感影像目标检测工具非常高效，操作简单，检测结果准确，大大提升了我的工作效率！</p>
+                    </blockquote>
+                    <p class="review-user">
+                      <img src="static/img/person_1.jpg" alt="用户头像" class="img-fluid rounded-circle mb-3">
+                      <span class="d-block">
+                        <span class="text-black">张三</span>, &mdash; 用户
+                      </span>
+                    </p>
+                  </div>
+                </div><!-- 结束评价项 -->
+
+                <!-- 评价 2 -->
+                <div class="swiper-slide">
+                  <div class="review text-center">
+                    <p class="stars">
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill muted"></span>
+                    </p>
+                    <h3>操作简单，功能强大！</h3>
+                    <blockquote>
+                      <p>作为一个初学者，我觉得这个工具非常友好，上传影像后很快就能得到检测结果，推荐给大家！</p>
+                    </blockquote>
+                    <p class="review-user">
+                      <img src="static/img/person_2.jpg" alt="用户头像" class="img-fluid rounded-circle mb-3">
+                      <span class="d-block">
+                        <span class="text-black">李四</span>, &mdash; 用户
+                      </span>
+                    </p>
+                  </div>
+                </div><!-- 结束评价项 -->
+
+                <!-- 评价 3 -->
+                <div class="swiper-slide">
+                  <div class="review text-center">
+                    <p class="stars">
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill muted"></span>
+                    </p>
+                    <h3>功能全面，效果出色！</h3>
+                    <blockquote>
+                      <p>这个工具不仅检测速度快，而且结果非常准确，支持多种影像格式，完全满足了我的需求！</p>
+                    </blockquote>
+                    <p class="review-user">
+                      <img src="static/img/person_3.jpg" alt="用户头像" class="img-fluid rounded-circle mb-3">
+                      <span class="d-block">
+                        <span class="text-black">王五</span>, &mdash; 用户
+                      </span>
+                    </p>
+                  </div>
+                </div><!-- 结束评价项 -->
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- 结束用户评价部分 -->
+
+    <!-- ======= 贡献者头像墙 ======= -->
+    <section class="section border-top border-bottom">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-8">
+            <h2 class="section-heading">欢迎加入</h2>
+            <p class="lead">感谢每一位支持者的宝贵建议与持续关注！未来，我们将持续倾听用户的声音，优化算法性能，提升检测精度，并致力于为用户提供更高效、更智能的服务体验。无论是科研工作者、行业专家，还是技术爱好者，我们都期待与您携手，共同推动遥感影像目标检测技术的发展，为更多应用场景创造价值！</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <!-- 贡献者头像 -->
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="150">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="250">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="350">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="450">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="500">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="550">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="650">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <!-- 更多贡献者头像 -->
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="700">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="750">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="800">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="850">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="900">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-2 col-3 mb-4" data-aos="fade-up" data-aos-delay="950">
+            <div class="contributor-avatar">
+              <img src="https://via.placeholder.com/100" alt="贡献者头像" class="img-fluid rounded-circle">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- 结束贡献者头像墙展示 -->
+
+    <!-- ======= CTA Section ======= -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 me-auto text-center text-md-start mb-5 mb-md-0">
+            <h2>Starts Publishing Your Apps</h2>
+          </div>
+          <div class="col-md-5 text-center text-md-end">
+            <p><a href="#" class="btn d-inline-flex align-items-center"><i class="bx bxl-apple"></i><span>App store</span></a> <a href="#" class="btn d-inline-flex align-items-center"><i class="bx bxl-play-store"></i><span>Google play</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End CTA Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4 mb-md-0">
+          <h3>About SoftLand</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam
+            dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi.</p>
+          <p class="social">
+            <a href="#"><span class="bi bi-twitter"></span></a>
+            <a href="#"><span class="bi bi-facebook"></span></a>
+            <a href="#"><span class="bi bi-instagram"></span></a>
+            <a href="#"><span class="bi bi-linkedin"></span></a>
+          </p>
+        </div>
+        <div class="col-md-7 ms-auto">
+          <div class="row site-section pt-0">
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Navigation</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Services</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Collaboration</a></li>
+                <li><a href="#">Todos</a></li>
+                <li><a href="#">Events</a></li>
+              </ul>
+            </div>
+            <div class="col-md-4 mb-4 mb-md-0">
+              <h3>Downloads</h3>
+              <ul class="list-unstyled">
+                <li><a href="#">Get from the App Store</a></li>
+                <li><a href="#">Get from the Play Store</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center text-center">
+        <div class="col-md-7">
+          <p class="copyright">&copy; Copyright SoftLand. All Rights Reserved</p>
+
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- 登录窗口 -->
+   <div id="loginModal" class="modal">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h2>欢迎来到星图睿瞳 ✨</h2>
+         <span class="close">&times;</span>
+       </div>
+       <form id="loginForm">
+         <div class="input-group">
+           <span class="input-icon">👤</span>
+           <input type="text" id="loginUsername" placeholder=" " name="phone/email" required>
+           <label>手机号 / 邮箱</label>
+         </div>
+         <div class="input-group">
+           <span class="input-icon">🔒</span>
+           <input type="password" id="loginPassword" placeholder=" " name="password" required>
+           <label>密码</label>
+         </div>
+         <button type="submit" class="modern-button submit-btn" style="margin-left: 248px;">登录</button>
+         <div class="extra-links">
+           <a href="#" id="goToRegister">创建新账号</a>
+           <a href="#" id="forgotPassword">找回密码</a>
+         </div>
+       </form>
+     </div>
+   </div>
+
+   <!-- 注册窗口 -->
+   <div id="registerModal" class="modal">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h2>新用户注册 🚀</h2>
+         <span class="close">&times;</span>
+       </div>
+       <form id="registerForm">
+         <!-- 用户名 -->
+         <div class="input-group">
+           <span class="input-icon">👤</span>
+           <input type="text" id="regUsername" placeholder=" " name="user_name" required>
+           <label>设置用户名</label>
+           <div class="error-message username-error">用户名不能为空</div>
+         </div>
+
+         <!-- 邮箱验证模块 -->
+         <div class="input-group">
+           <span class="input-icon">📧</span>
+           <input type="email" id="regEmail" placeholder=" " name="email">
+           <label>电子邮箱</label>
+           <button type="button" id="sendEmailCode" class="send-code-btn">
+             <span class="btn-text">发送验证码</span>
+             <span class="countdown"></span>
+           </button>
+         </div>
+         <div class="input-group">
+           <span class="input-icon">🔢</span>
+           <input type="text" id="emailCode" placeholder=" " name="email_code" required>
+           <label>邮箱验证码</label>
+           <div class="error-message email-code-error"></div>
+         </div>
+
+         <!-- 手机验证模块 -->
+         <div class="input-group">
+           <span class="input-icon">📱</span>
+           <input type="tel" id="regPhone" pattern="\d{11}" placeholder=" " name="phone_number">
+           <label>手机号码</label>
+           <button type="button" id="sendPhoneCode" class="send-code-btn">
+             <span class="btn-text">发送验证码</span>
+             <span class="countdown"></span>
+           </button>
+         </div>
+         <div class="input-group">
+           <span class="input-icon">🔢</span>
+           <input type="text" id="phoneCode" placeholder=" " name="phone_code" required>
+           <label>手机验证码</label>
+           <div class="error-message phone-code-error"></div>
+         </div>
+
+         <!-- 密码模块 -->
+         <div class="input-group">
+           <span class="input-icon">🔑</span>
+           <input type="password" id="regPassword" placeholder=" " required>
+           <label>设置密码</label>
+           <div class="error-message" id="passwordError"></div>
+         </div>
+         <div class="input-group">
+           <span class="input-icon">✅</span>
+           <input type="password" id="regConfirm" placeholder=" " name="password" required>
+           <label>确认密码</label>
+           <div class="error-message" id="confirmError"></div>
+         </div>
+
+         <!-- 操作按钮 -->
+         <div class="form-buttons">
+           <button type="button" id="backToLogin" class="modern-button back-btn">返回登录</button>
+           <button type="submit" class="modern-button submit-btn">立即注册</button>
+         </div>
+       </form>
+     </div>
+   </div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/aos/aos.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/php-email-form/validate.js"></script>
+  <script src="static/vendor/swiper/swiper-bundle.min.js"></script>
+  
+  
+  <!-- Template Main JS File -->
+  <script src="static/js/main.js"></script>
+<script>
+    // 全局状态
+    const appState = {
+        isLoggedIn: false,
+        user: null
+    };
+
+    // 更新登录状态
+    function updateLoginState(isLoggedIn, user) {
+        appState.isLoggedIn = isLoggedIn;
+        appState.user = user;
+        console.log('登录状态更新:', appState);
+    }
+
+    // 显示错误提示
+    function showError(element, message) {
+        if (element) {
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+    }
+
+    // 清除所有错误提示
+    function clearErrors() {
+        document.querySelectorAll('.error-message').forEach(el => {
+            el.textContent = '';
+            el.style.display = 'none';
+        });
+    }
+
+    // 倒计时函数
+    let emailCountdownActive = false;
+    let phoneCountdownActive = false;
+    function startCountdown(type) {
+        if (type === 'email') {
+            emailCountdownActive = true;
+        }
+        else if (type === 'phone') {
+            phoneCountdownActive = true;
+        }
+
+        let remaining = 60;
+        const button = type === 'email' ? document.getElementById('sendEmailCode') : document.getElementById('sendPhoneCode');
+        if (!button) return;
+
+        button.disabled = true;
+
+        const interval = setInterval(() => {
+            button.querySelector('.btn-text').style.display = 'none';
+            button.querySelector('.countdown').style.display = 'inline';
+            button.querySelector('.countdown').textContent = `${remaining}s`;
+
+            remaining--;
+
+            if (remaining < 0) {
+                clearInterval(interval);
+                resetButton(button, type);
+            }
+        }, 1000);
+    }
+
+    // 重置按钮状态
+    function resetButton(button, type) {
+        if (type === 'email') {
+            emailCountdownActive = false;
+        }
+        else if (type === 'phone') {
+            phoneCountdownActive = false;
+        }
+
+        button.disabled = false;
+        button.querySelector('.btn-text').style.display = 'inline';
+        button.querySelector('.countdown').style.display = 'none';
+    }
+
+    // 验证邮箱格式
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+
+    // 模态框显示/隐藏
+    document.addEventListener('DOMContentLoaded', () => {
+        const loginBtn = document.getElementById('login-button');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const loginCloseButtons = loginModal?.querySelectorAll('.close');
+        const registerCloseButtons = registerModal?.querySelectorAll('.close');
+
+        // 显示登录模态框
+        if (loginBtn && loginModal) {
+            loginBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginModal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        // 关闭登录模态框
+        if (loginCloseButtons) {
+            loginCloseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    loginModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // 关闭注册模态框
+        if (registerCloseButtons) {
+            registerCloseButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    registerModal.style.display = 'none';
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // 切换到注册窗口
+        const goToRegister = document.getElementById('goToRegister');
+        if (goToRegister && registerModal) {
+            goToRegister.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginModal.style.display = 'none';
+                registerModal.style.display = 'block';
+            });
+        }
+
+        // 返回登录界面
+        const backToLogin = document.getElementById('backToLogin');
+        if (backToLogin && loginModal && registerModal) {
+            backToLogin.addEventListener('click', (e) => {
+                e.preventDefault();
+                registerModal.style.display = 'none';
+                loginModal.style.display = 'block';
+            });
+        }
+
+        // 注册表单提交与前端校验
+        const registerForm = document.getElementById('registerForm');
+        if (registerForm) {
+            registerForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                // 获取表单数据
+                const formData = {
+                    username: document.getElementById('regUsername').value,
+                    email: document.getElementById('regEmail').value,
+                    phone: document.getElementById('regPhone').value,
+                    emailCode: document.getElementById('emailCode').value,
+                    phoneCode: document.getElementById('phoneCode').value,
+                    password: document.getElementById('regPassword').value,
+                    confirm: document.getElementById('regConfirm').value
+                };
+
+                // 前端验证
+                let isValid = true;
+                const usernameError = document.querySelector('.username-error');
+                const emailCodeError = document.querySelector('.email-code-error');
+                const phoneCodeError = document.querySelector('.phone-code-error');
+                const passwordError = document.getElementById('passwordError');
+                const confirmError = document.getElementById('confirmError');
+
+                clearErrors();
+
+                if (!formData.username) {
+                    showError(usernameError, '用户名不能为空');
+                    isValid = false;
+                }
+                if (!formData.emailCode) {
+                    showError(emailCodeError, '请输入邮箱验证码');
+                    isValid = false;
+                }
+                if (!formData.phoneCode) {
+                    showError(phoneCodeError, '请输入手机验证码');
+                    isValid = false;
+                }
+                if (formData.password.length < 6 || formData.password.length > 18) {
+                    showError(passwordError, '密码至少6位，且小于18位');
+                    isValid = false;
+                }
+                if (formData.password !== formData.confirm) {
+                    showError(confirmError, '两次密码不一致');
+                    isValid = false;
+                }
+
+                if (!isValid) return;
+
+                // 验证邮箱验证码
+                const isEmailCodeValid = await verifyEmailCode(formData.email, formData.emailCode);
+                if (!isEmailCodeValid) return;
+
+                // 验证手机验证码
+                const isPhoneCodeValid = await verifyPhoneCode(formData.phone, formData.phoneCode);
+                if (!isPhoneCodeValid) return;
+
+                // 提交数据
+                try {
+                    const result = await sendRequest('/user/register', 'POST', formData);
+                    if (result.re_code === RET.OK) {
+                        alert('注册成功！');
+                        registerForm.reset();
+                        registerModal.style.display = 'none';
+                        document.body.style.overflow = '';
+                    } else {
+                        alert(`注册失败: ${result.message}`);
+                    }
+                } catch (error) {
+                    console.error('请求错误:', error);
+                    alert('请求错误: ' + error.message);
+                }
+            });
+        }
+
+        // 登录表单提交
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const csrfToken = getCSRFToken();
+                if (!csrfToken) {
+                    console.error('CSRF Token not found');
+                    alert('CSRF Token 缺失，请刷新页面后重试');
+                    return;
+                }
+
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                const isPhone = !username.includes('@');
+
+                const data = {
+                    password: password,
+                    [isPhone ? 'phone' : 'email']: username
+                };
+
+                try {
+                    const result = await sendRequest('/user/login', 'POST', data);
+                    const avatar_img = result.user?.avatar;
+
+                    if (result.re_code === RET.OK) {
+                        updateLoginState(true, result.user);
+                        alert('登录成功！');
+                        loginForm.reset();
+
+                        const loginModal = document.getElementById('loginModal');
+                        if (loginModal) {
+                            loginModal.style.display = 'none';
+                        }
+                        document.body.style.overflow = '';
+
+                        const loginButton = document.getElementById('login-button');
+                        const userAvatar = document.getElementById('user-avatar');
+                        const avatar_url = document.getElementById('user-avatar_url');
+
+                        if (loginButton) loginButton.style.display = 'none';
+                        if (userAvatar) {
+                            userAvatar.style.display = 'inline-block';
+                            avatar_url.src = avatar_img || 'static/img/default_avatar.jpg';
+                        }
+
+                        localStorage.setItem('isLoggedIn', 'true');
+                        localStorage.setItem('username', username);
+                        localStorage.setItem('userAvatar', avatar_img || 'https://remote-sensing-system.oss-cn-beijing.aliyuncs.com/images/default%20avatar.jpg');
+                    } else {
+                        alert('登录失败: ' + result.msg);
+                    }
+                } catch (error) {
+                    console.error('请求错误:', error);
+                    alert('请求错误: ' + error.message);
+                }
+            });
+        }
+
+        // 退出登录
+        const exitLink = document.getElementById('exit');
+        if (exitLink) {
+            exitLink.addEventListener('click', async (e) => {
+                e.preventDefault();
+                await logout();
+            });
+        }
+
+        async function logout() {
+            try {
+                const result = await sendRequest('/sessions', 'DELETE', {});
+                if (result.re_code === RET.OK) {
+                    localStorage.removeItem('isLoggedIn');
+                    localStorage.removeItem('username');
+                    localStorage.removeItem('userAvatar');
+
+                    const loginButton = document.getElementById('login-button');
+                    const userAvatar = document.getElementById('user-avatar');
+
+                    if (loginButton) loginButton.style.display = 'inline-block';
+                    if (userAvatar) userAvatar.style.display = 'none';
+
+                    updateLoginState(false, null);
+                    window.location.href = '/';
+                    alert('退出登录成功');
+                } else {
+                    alert('退出登录失败: ' + result.msg);
+                }
+            } catch (error) {
+                console.error('退出登录失败:', error);
+            }
+        }
+
+        // 验证邮箱验证码
+        async function verifyEmailCode(email, code) {
+            try {
+                const result = await sendRequest('/verify_email_code', 'POST', { email, code });
+                if (result.re_code === RET.OK) {
+                    alert('验证码验证成功！');
+                    return true;
+                } else {
+                    const errorMessage = getErrorMessage(result.re_code) || result.msg;
+                    alert(`验证码验证失败: ${errorMessage}`);
+                    return false;
+                }
+            } catch (error) {
+                console.error('请求错误:', error);
+                alert('请求错误: ' + error.message);
+                return false;
+            }
+        }
+
+        // 发送邮箱验证码
+        const sendEmailCodeBtn = document.getElementById('sendEmailCode');
+        if (sendEmailCodeBtn) {
+            sendEmailCodeBtn.addEventListener('click', async () => {
+                const email = document.getElementById('regEmail').value;
+                const emailError = document.querySelector('.email-code-error');
+
+                if (!validateEmail(email)) {
+                    showError(emailError, '请输入有效的邮箱地址');
+                    return;
+                }
+
+                if (emailCountdownActive) {
+                    alert('请等待倒计时结束后再发送');
+                    return;
+                }
+
+                try {
+                    const result = await sendRequest('/send_email_code', 'POST', { email });
+                    if (result.re_code === RET.OK) {
+                        showError(emailError, '');
+                        alert('验证码已发送');
+                        startCountdown('email');
+                    } else {
+                        const errorMessage = result.msg;
+                        showError(emailError, errorMessage);
+                    }
+                } catch (error) {
+                    console.error('发送失败:', error);
+                    showError(emailError, '请求错误，请稍后重试');
+                }
+            });
+        }
+    });
+
+    // 验证手机验证码
+    async function verifyPhoneCode(phone, code) {
+        try {
+            const result = await sendRequest('/verify_phone_code', 'POST', { phone, code });
+            if (result.re_code === RET.OK) {
+                alert('验证码验证成功！');
+                return true;
+            } else {
+                const errorMessage = getErrorMessage(result.re_code) || result.msg;
+                alert(`验证码验证失败: ${errorMessage}`);
+                return false;
+            }
+        } catch (error) {
+            console.error('请求错误:', error);
+            alert('请求错误: ' + error.message);
+            return false;
+        }
+    }
+    // 发送手机验证码
+     const sendPhoneCodeBtn = document.getElementById('sendPhoneCode');
+     if (sendPhoneCodeBtn) {
+         sendPhoneCodeBtn.addEventListener('click', async () => {
+             const phoneNumber = document.getElementById('regPhone').value;
+             const phoneError = document.querySelector('.phone-code-error');
+
+             // 检查是否正在倒计时
+             if (phoneCountdownActive) {
+                 alert('请等待倒计时结束后再发送');
+                 return;
+             }
+
+             try {
+                 // 发送请求
+                 const result = await sendRequest('/send_phone_code', 'POST', { phone: phoneNumber });
+                 if (result.re_code === RET.OK) {
+                     showError(phoneError, ''); // 清空错误信息
+                     alert('验证码已发送');
+                     startCountdown('phone'); // 启动倒计时
+                 } else {
+                     const errorMessage = result.msg;
+                     showError(phoneError, errorMessage); // 显示错误信息
+                 }
+             } catch (error) {
+                 console.error('发送失败:', error);
+                 showError(phoneError, '请求错误，请稍后重试');
+             }
+         });
+     }
+</script>
+</body>
+
+</html>

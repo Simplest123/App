@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>SoftLand Bootstrap Template - Contact</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link href="assets/css/center_css.css" rel="stylesheet" />
+  <style>
+	  /* 扩展样式到所有可点击列表 */
+	  .clickable-list li {
+	    cursor: pointer;
+	    transition: all 0.2s;
+	    padding: 8px 12px;
+	    border-radius: 4px;
+	  }
+	  
+	  .clickable-list li:hover {
+	    background-color: #f8f9fa;
+	    transform: translateX(5px);
+	  }
+	  
+	  /* 保持原有活动列表样式 */
+	  .activity-list {
+	    list-style: none;
+	    padding-left: 0;
+	    margin-bottom: 0;
+	  }
+	  /* 添加精确对齐样式 */
+	  .container-fluid {
+	    max-width: 1600px;
+	    padding: 0 2rem;
+	  }
+	  
+	  .row.g-4 {
+	    align-items: stretch;
+	    margin-left: -12px;
+	    margin-right: -12px;
+	  }
+	  
+	  .col-lg-3, .col-lg-9 {
+	    padding-left: 12px;
+	    padding-right: 12px;
+	    position: relative; /* 确保边框对齐 */
+	  }
+	  
+	  .card {
+	    border: 1px solid #dee2e6;
+	    border-radius: 0.75rem;
+	    overflow: hidden;
+	  }
+	  
+	  /* 统一内容区块间距 */
+	  .content-wrapper > .card {
+	    margin-bottom: 1.5rem;
+	  }
+	  
+	  /* 响应式调整 */
+	  @media (max-width: 992px) {
+	    .container-fluid {
+	      padding: 0 1rem;
+	    }
+	    
+	    .col-lg-3, .col-lg-9 {
+	      padding-left: 8px;
+	      padding-right: 8px;
+	    }
+	  }
+	  /* 自定义超大模态框 */
+	  .modal-xxl {
+	    max-width: 1600px;
+	    width: 95%;
+	    height: 90vh;
+	  }
+	  
+	  .modal-xxl .modal-content {
+	    height: 100%;
+	    border-radius: 1rem;
+	  }
+	  
+	  .image-container {
+	    height: 100%;
+	    position: relative;
+	    overflow: hidden;
+	  }
+	  
+	  .image-caption {
+	    position: absolute;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+	    padding: 0.5rem 1rem;
+	    background: rgba(0,0,0,0.8);
+	    color: white;
+	    font-size: 0.85em;
+	  }
+	  
+	  .table-wrapper {
+	    max-height: 400px;
+	    overflow-y: auto;
+	  }
+	  
+	  .data-table {
+	    border: 1px solid #dee2e6;
+	    border-radius: 0.5rem;
+	  }
+	  
+	  .stats-card {
+	    background: #f8f9fa;
+	    box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+	  }
+	  
+	  .btn-group-vertical .btn {
+	    transition: all 0.2s ease;
+	    padding: 0.75rem 1.5rem;
+	  }
+	  
+	  @media (max-width: 1600px) {
+	    .modal-xxl {
+	      width: 98%;
+	      margin: 1rem auto;
+	    }
+	    
+	    .image-caption {
+	      font-size: 0.75em;
+	    }
+	  }
+	  /* 添加自定义滚动条样式 */
+	  .table-wrapper::-webkit-scrollbar {
+	    width: 6px;
+	    height: 6px;
+	  }
+	  
+	  .table-wrapper::-webkit-scrollbar-track {
+	    background: #f1f1f1;
+	    border-radius: 3px;
+	  }
+	  
+	  .table-wrapper::-webkit-scrollbar-thumb {
+	    background: #888;
+	    border-radius: 3px;
+	  }
+	  
+	  .table-wrapper::-webkit-scrollbar-thumb:hover {
+	    background: #555;
+	  }
+	  
+	  /* 保持表格标题固定 */
+	  .sticky-top {
+	    z-index: 1;
+	    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+	  }
+	 /* 卡片容器优化 */
+	  .card-img-container {
+	    position: relative;
+	    overflow: hidden;
+	    border-radius: 0.5rem 0.5rem 0 0;
+	    background: #f8f9fa;
+	  }
+
+	  .img-hover-layer {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    background: rgba(0,0,0,0.4);
+	    opacity: 0;
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    transition: opacity 0.3s ease;
+	  }
+
+	  .card:hover .img-hover-layer {
+	    opacity: 1;
+	  }
+
+	  /* 卡片尺寸控制 */
+	  .shadow-hover {
+	    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	  }
+
+	  .shadow-hover:hover {
+	    transform: translateY(-3px);
+	    box-shadow: 0 0.5rem 1.2rem rgba(0,0,0,0.12) !important;
+	  }
+
+	  /* 响应式调整 */
+	  @media (min-width: 992px) { /* 大屏时每行4个 */
+	    .row-cols-lg-4 > * {
+	      flex: 0 0 23%;  /* 保留2%的间隙空间 */
+	      max-width: 23%;
+	      margin: 0 1%;
+	    }
+
+	    .g-3 {
+	      --bs-gutter-x: 1.2rem;
+	    }
+	  }
+
+	  @media (max-width: 991px) { /* 中屏时每行3个 */
+	    .row-cols-md-3 > * {
+	      flex: 0 0 31%;
+	      max-width: 31%;
+	    }
+	  }
+
+	  .card-title {
+	    font-size: 1.05rem;
+	    line-height: 1.3;
+	    color: #2c3e50;
+	  }
+	    /* 新增样式 */
+	    .fixed-aspect-container {
+	      position: relative;
+		  height:884px;
+	      width: 100%;
+	      padding-top: 56.25%; /* 16:9宽高比 */
+	      background: #f8f9fa;
+	      border-radius: 0.75rem;
+	      overflow: hidden;
+	      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.05);
+	    }
+	  
+	    .fixed-aspect-container img {
+	      position: absolute;
+	      top: 50%;
+	      left: 50%;
+	      transform: translate(-50%, -50%)scale(1.9);
+	      max-width: 100%;
+	      max-height: 100%;
+	      object-fit: contain;
+	    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex justify-content-between align-items-center" style="width: 1800px;">
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html" style="font-size: 20px;padding-right: 25px;">首页</a></li>
+          <li class="dropdown"><a href="#" style="font-size: 20px;padding-right: 25px;"><span>服务</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="service_photo.html">图片检测</a></li>
+              <li><a href="service_video.html">视频检测</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li>
+          <li><a href="article.html" style="font-size: 20px;padding-right: 25px;">论坛</a></li>
+          <li><a href="blog.html" style="font-size: 20px;">帮助</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li>
+            <a href="#" style="font-size: 20px;" id="login-button">登录</a>
+            <li id="user-avatar" class="dropdown" style="display: none">
+              <a href="#" style="font-size: 20px;padding-right: 25px;"><img id="user-avatar_url" src="" alt="用户头像" style="width: 40px; height: 40px; border-radius: 50%;"><i class="bi bi-chevron-down"></i></a>
+              <ul style="width:100px ">
+                <li><a href="center.html">个人中心</a></li>
+                <li><a id='exit' href="#">退出登录</a></li>
+              </ul>
+            </li>
+          </li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 头像模态框 -->
+  <div class="modal fade" id="avatarModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">更换头像</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="avatar-preview">
+            <img id="avatar-preview" src="#" alt="预览头像" style="display: none;">
+          </div>
+          <div class="file-input-wrapper" style="margin-left: 162px;">
+            <input type="file" id="avatar-upload" accept="image/*">
+            <button class="btn">选择图片</button>
+          </div>
+        </div>
+        <div class="modal-footer" style="gap: 258px;">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" id="confirm-change">确定</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- 行为模态框 -->
+  <div class="modal fade" id="activityModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><i class="bi bi-clock-history me-2"></i>完整使用记录</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="activity-list">
+            <!-- 完整列表，可添加更多记录 -->
+            <li><i class="bi bi-check-circle text-success"></i>2023-08-25 14:30 登录成功</li>
+            <li><i class="bi bi-credit-card"></i>2023-08-24 10:15 购买会员套餐</li>
+            <li><i class="bi bi-gear"></i>2023-08-23 16:20 修改个人资料</li>
+            <li><i class="bi bi-download"></i>2023-08-22 09:45 下载文件</li>
+            <li><i class="bi bi-upload"></i>2023-08-21 11:20 上传资料</li>
+            <li><i class="bi bi-shield-check"></i>2023-08-20 15:10 安全设置更新</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 在原有安全设置卡片下方添加密码修改模态框 -->
+  <div class="modal fade" id="changePasswordModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow-lg">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-primary">
+            <i class="bi bi-shield-lock me-2"></i>修改密码
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="passwordForm">
+            <!-- 原密码 -->
+            <div class="mb-4">
+              <label class="form-label text-muted fw-bold">
+                <i class="bi bi-lock me-2"></i>原密码
+              </label>
+              <div class="input-group">
+                <span class="input-group-text bg-light">
+                  <i class="bi bi-key text-muted"></i>
+                </span>
+                <input type="password" class="form-control" 
+                       placeholder="请输入当前密码" required>
+              </div>
+            </div>
+  
+            <!-- 新密码 -->
+            <div class="mb-4">
+              <label class="form-label text-muted fw-bold">
+                <i class="bi bi-shield-check me-2"></i>新密码
+              </label>
+              <div class="input-group">
+                <span class="input-group-text bg-light">
+                  <i class="bi bi-key-fill text-muted"></i>
+                </span>
+                <input type="password" class="form-control" 
+                       id="newPassword" placeholder="至少8位字符" 
+                       minlength="8" required>
+              </div>
+              <div class="password-strength mt-2">
+                <div class="progress" style="height: 4px;">
+                  <div class="progress-bar" role="progressbar"></div>
+                </div>
+                <small class="text-muted">密码强度：弱</small>
+              </div>
+            </div>
+  
+            <!-- 确认密码 -->
+            <div class="mb-4">
+              <label class="form-label text-muted fw-bold">
+                <i class="bi bi-shield-check me-2"></i>确认密码
+              </label>
+              <div class="input-group">
+                <span class="input-group-text bg-light">
+                  <i class="bi bi-key-fill text-muted"></i>
+                </span>
+                <input type="password" class="form-control" 
+                       id="confirmPassword" placeholder="再次输入新密码" 
+                       required>
+              </div>
+              <div class="invalid-feedback">两次输入的密码不一致</div>
+            </div>
+  
+            <div class="d-flex gap-3 justify-content-end mt-4">
+              <button type="button" class="btn btn-outline-secondary px-4" 
+                      data-bs-dismiss="modal">取消</button>
+              <button type="submit" class="btn btn-primary px-4">
+                <i class="bi bi-check2-circle me-2"></i>确认修改
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- 图片详情模态框 -->
+<div class="modal fade" id="detailModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-xxl">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h5 class="modal-title fs-4">检测结果详情</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body p-4 h-100">
+        <div class="row h-100 g-4">
+          <!-- 左侧信息区 (40%宽度) -->
+          <div class="col-lg-4 d-flex flex-column">
+            <!-- 修改点：原始图片容器缩小 -->
+            <div class="image-container bg-light rounded-3 shadow-sm" 
+                 style="height: 180px; flex-shrink: 0;  /* 主要修改高度 */
+                        position: relative;
+                        overflow: hidden;  /* 新增溢出隐藏 */
+                        margin-bottom: 1rem;">  <!-- 增加底部间距 -->
+              <img id="originalImage" src="" 
+                   class="img-fluid h-100 w-100"
+                   style="object-fit: contain;  /* 修改为contain */
+                          padding: 8px;
+                          position: absolute;
+                          top: 50%;
+                          left: 50%;
+                          transform: translate(-50%, -50%);">
+              <div class="image-caption bg-dark text-white p-2 small"
+                   style="position: absolute; bottom: 0; left: 0; right: 0;">
+                原始图像 - 分辨率: <span id="originalResolution">-</span>
+              </div>
+            </div>
+
+            <!-- 信息展示区（保持完整） -->
+            <div class="flex-grow-1 d-flex flex-column" style="height: 600px;">
+              <!-- 统计信息卡 -->
+              <div class="stats-card bg-light rounded-3 p-3 mb-3" style="height: 280px;">
+                <dl class="row g-2">
+                  <dt class="col-5">项目名称</dt>
+                  <dd class="col-7 text-truncate" id="project_name">-</dd>
+				  
+				  <dt class="col-5">项目创建时间</dt>
+				  <dd class="col-7" id="detailDate">-</dd>
+                  
+                  <dt class="col-5">检测场景</dt>
+                  <dd class="col-7" id="detailModel">-</dd>
+				  
+				  <dt class="col-5">模型大小</dt>
+				  <dd class="col-7" id="modelSize">-</dd>
+				  
+				  <dt class="col-5">置信度</dt>
+				  <dd class="col-7" id="conf_thresold">-</dd>
+                  
+                  <dt class="col-5">总目标数</dt>
+                  <dd class="col-7" id="detailTotal">-</dd>
+                 
+                  
+                  <dt class="col-5">检测耗时</dt>
+                  <dd class="col-7" id="detailTime">-</dd>
+                </dl>
+              </div>
+
+              <!-- 滚动表格 -->
+              <div class="data-table flex-grow-1 bg-light rounded-3">
+                <div class="table-wrapper border-top" style="height: 320px; overflow-y: auto;">
+                  <table class="table table-sm table-hover align-middle mb-0">
+                    <thead class="sticky-top bg-white">
+                      <tr>
+                        <th width="15%">序号</th>
+                        <th width="30%">类别</th>
+                        <th width="35%">坐标</th>
+                        <th width="20%">置信度</th>
+                      </tr>
+                    </thead>
+                    <tbody id="form-content">
+                      <!-- 动态数据插入 -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- 下载按钮 -->
+            <div class="text-center mt-3">
+              <button class="btn btn-primary w-100" onclick="downloadPDF()">
+                <i class="bi bi-download me-2"></i>下载检测结果
+              </button>
+            </div>
+          </div>
+
+          <!-- 右侧检测结果区 (保持完整) -->
+          <!-- 修改右侧容器结构 -->
+          <div class="col-lg-8">
+            <div class="fixed-aspect-container">
+              <img id="detectedImage" src="" alt="检测结果">
+              <div class="image-caption bg-dark text-white p-2 small">
+                检测结果 - 模型: <span id="modelVersion">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <section class="hero-section" id="hero"  style="min-height: 1400px; display: flex; flex-direction: column;">
+    <div class="wave">
+      <svg width="100%" height="355px" viewBox="0 0 1920 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+            <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="container-fluid px-4">
+      <div class="row g-4 flex-grow-1" style="align-items: start;">
+        <!-- 左侧导航 -->
+        <div class="col-lg-3 d-flex flex-column" style="width: 20%;">
+          <div class="card h-100 shadow-sm" style="min-height: 1000px;">
+            <div class="card-body p-4">
+              <div class="user-avatar mb-4">
+                <a href="#" id="avatar-link">
+                  <img id="user-avatar_2" src="assets/img/img_2.jpg" class="rounded-circle" width="120" alt="用户头像" style="margin-left: 60px;">
+                </a>
+              </div>
+              <div class="list-group">
+                <a href="#profile" class="list-group-item list-group-item-action">个人资料</a>
+                <a href="#security" class="list-group-item list-group-item-action">账户安全</a>
+               <a href="#orders" class="list-group-item list-group-item-action">项目数据</a>
+                <a href="#messages" class="list-group-item list-group-item-action">站内消息 <span class="badge bg-danger">2</span></a>
+                <a href="#settings" class="list-group-item list-group-item-action">隐私设置</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右侧内容 -->
+        <div class="col-lg-9" style="width:1250px;">
+			<div class="h-100">
+				<div class="content-wrapper">
+					 <div class="card mb-4 shadow-sm content-section" id="profileSection" style="height: 1000px;">
+					 			            <!-- ... 原有profile内容 ... -->
+					 				<!-- 个人资料 -->
+					 				  <div class="card mb-4 shadow-sm">
+					 				      <div class="card-body p-4">
+					 				          <div class="d-flex align-items-center mb-4">
+					 				              <h4 class="card-title text-primary mb-0">
+					 				                  <i class="bi bi-person-circle me-2" style="font-size: 28px; vertical-align: middle;"></i>
+					 				                  基本资料
+					 				              </h4>
+					 				          </div>
+					 				  
+					 				          <form class="needs-validation" novalidate>
+					 				              <div class="row g-4 mb-4">
+					 				                  <!-- 用户名 -->
+					 				                  <div class="col-md-6">
+					 				                      <label class="form-label text-muted fw-bold">
+					 				                          <i class="bi bi-person-badge me-2"></i>用户名
+					 				                      </label>
+					 				                      <div class="input-group">
+					 				                          <span class="input-group-text bg-light border-end-0">
+					 				                              <i class="bi bi-at text-muted"></i>
+					 				                          </span>
+					 				                          <input type="text" class="form-control border-start-0" 
+					 				                                 value="zhangsan" required
+					 				                                 pattern="[A-Za-z0-9]{4,20}">
+					 				                          <div class="valid-feedback">用户名可用</div>
+					 				                          <div class="invalid-feedback">请输入4-20位字母或数字</div>
+					 				                      </div>
+					 				                  </div>
+					 				  
+					 				                  <!-- 电子邮箱 -->
+					 				                  <div class="col-md-6">
+					 				                      <label class="form-label text-muted fw-bold">
+					 				                          <i class="bi bi-envelope me-2"></i>电子邮箱
+					 				                      </label>
+					 				                      <div class="input-group">
+					 				                          <span class="input-group-text bg-light border-end-0">
+					 				                              <i class="bi bi-mailbox text-muted"></i>
+					 				                          </span>
+					 				                          <input type="email" class="form-control border-start-0" 
+					 				                                 value="zhangsan@example.com" required>
+					 				                          <div class="valid-feedback">邮箱格式正确</div>
+					 				                          <div class="invalid-feedback">请输入有效的邮箱地址</div>
+					 				                      </div>
+					 				                  </div>
+					 				  
+					 				                  <!-- 手机号码 -->
+					 				                  <div class="col-md-6">
+					 				                      <label class="form-label text-muted fw-bold">
+					 				                          <i class="bi bi-phone me-2"></i>手机号码
+					 				                      </label>
+					 				                      <div class="input-group">
+					 				                          <span class="input-group-text bg-light border-end-0">
+					 				                              <i class="bi bi-telephone text-muted"></i>
+					 				                          </span>
+					 				                          <input type="tel" class="form-control border-start-0" 
+					 				                                 value="13800138000" required
+					 				                                 pattern="^1[3-9]\d{9}$">
+					 				                          <div class="valid-feedback">手机号有效</div>
+					 				                          <div class="invalid-feedback">请输入有效的手机号码</div>
+					 				                      </div>
+					 				                  </div>
+					 								  
+					 								  <!-- 新增生日字段 -->
+					 								      <div class="col-md-6">
+					 								          <label class="form-label text-muted fw-bold">
+					 								              <i class="bi bi-calendar2-heart me-2"></i>生日
+					 								          </label>
+					 								          <div class="input-group">
+					 								              <span class="input-group-text bg-light border-end-0">
+					 								                  <i class="bi bi-calendar text-muted"></i>
+					 								              </span>
+					 								              <input type="date" class="form-control border-start-0 date-picker-custom" 
+					 								                     value="1990-01-01" required>
+					 								              <div class="valid-feedback">生日格式正确</div>
+					 								              <div class="invalid-feedback">请选择有效日期</div>
+					 								          </div>
+					 								      </div>
+					 								  
+					 				              </div>
+					 				  
+					 				              <button type="submit" class="btn btn-primary px-5 py-2" style="margin-left: 995px;">
+					 				                  <i class="bi bi-cloud-arrow-up me-2"></i>
+					 				                  更新资料
+					 				              </button>
+					 				          </form>
+					 				      </div>
+					 				  </div>
+					 				  <!-- 安全设置 -->
+					 				  
+					 				  <div class="card mb-4 shadow-sm">
+					 				      <div class="card-body p-4">
+					 				          <h4 class="card-title text-primary"><i class="bi bi-shield-lock me-2"></i>安全设置</h4>
+					 				          
+					 						  
+					 						  
+					 				          <!-- 密码管理区块 -->
+					 				          <div class="security-item p-4 rounded-3 bg-light mb-3">
+					 				              <div class="d-flex justify-content-between align-items-center mb-3">
+					 				                  <div>
+					 				                      <h5 class="mb-1"><i class="bi bi-key me-2"></i>密码管理</h5>
+					 				                      <p class="text-muted mb-0">上次修改密码：<span class="text-dark fw-bold">2023-06-15</span></p>
+					 				                  </div>
+					 				                 <button class="btn btn-primary px-4" 
+					 				                         data-bs-toggle="modal" 
+					 				                         data-bs-target="#changePasswordModal">
+					 				                   <i class="bi bi-arrow-repeat me-2"></i>
+					 				                   修改密码
+					 				                 </button>
+					 				              </div>
+					 				              <div class="progress" style="height: 4px;">
+					 				                  <div class="progress-bar bg-success" role="progressbar" style="width: 85%" 
+					 				                       aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+					 				              </div>
+					 				              <small class="text-muted">密码强度：强</small>
+					 				          </div>
+					 				  
+					 				          <hr class="border-top-2 my-4">
+					 				  
+					 				          <!-- 双重认证区块 -->
+					 				          <div class="security-item p-4 rounded-3 bg-light">
+					 				              <h5 class="mb-3"><i class="bi bi-phone me-2"></i>双重认证</h5>
+					 				              <div class="d-flex justify-content-between align-items-center">
+					 				                  <div class="form-check form-switch mb-0">
+					 				                      <input class="form-check-input" type="checkbox" id="twoFactorAuth" style="width: 3em; height: 1.5em;">
+					 				                      <label class="form-check-label ms-2" for="twoFactorAuth">启用双重认证</label>
+					 				                  </div>
+					 				                  <span class="badge bg-info">推荐开启</span>
+					 				              </div>
+					 				          </div>
+					 				      </div>
+					 				  </div>
+					 				  <!-- 最近活动 -->
+					 				  <div class="card">
+					 				    <div class="card-body">
+					 				      <h4 class="card-title" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#activityModal">
+					 				        <i class="bi bi-clock-history me-2"></i>使用记录
+					 				      </h4>
+					 				      <ul class="activity-list">
+					 				        <!-- 简略列表，保留3条记录 -->
+					 				        <li><i class="bi bi-check-circle text-success"></i>2023-08-25 14:30 登录成功</li>
+					 				        <li><i class="bi bi-credit-card"></i>2023-08-24 10:15 购买会员套餐</li>
+					 				        <li><i class="bi bi-gear"></i>2023-08-23 16:20 修改个人资料</li>
+					 				      </ul>
+					 				    </div>
+					 				  </div>
+					 			</div>
+					 			
+					 	<div class="card mb-4 content-section d-none" id="ordersSection" style="height: 1000px;">
+					 	    <div class="card-body p-3 p-md-4">
+					 	        <!-- 头部操作栏 -->
+					 	        <div class="d-flex justify-content-between align-items-center mb-4">
+					 	            <h4 class="card-title text-primary fs-4 mb-0">
+					 	                <i class="bi bi-grid-3x3-gap-fill me-2"></i>项目数据
+					 	            </h4>
+					 	            <div class="d-flex gap-2">
+					 	                <!-- 增强型筛选下拉 -->
+					 	                <div class="dropdown">
+					 	                    <button class="btn btn-outline-primary btn-sm dropdown-toggle"
+					 	                            type="button"
+					 	                            data-bs-toggle="dropdown"
+					 	                            aria-expanded="false">
+					 	                        <i class="bi bi-funnel me-2"></i>智能筛选
+					 	                    </button>
+					 	                    <ul class="dropdown-menu dropdown-menu-end shadow">
+					 	                        <li><h6 class="dropdown-header">检测类型</h6></li>
+					 	                        <li><a class="dropdown-item" href="#">
+					 	                            <i class="bi bi-card-image me-2"></i>图片检测
+					 	                        </a></li>
+					 	                        <li><a class="dropdown-item" href="#">
+					 	                            <i class="bi bi-camera-reels me-2"></i>视频检测
+					 	                        </a></li>
+					 	                        <li><hr class="dropdown-divider"></li>
+					 	                        <li><h6 class="dropdown-header">时间范围</h6></li>
+					 	                        <li><a class="dropdown-item" href="#">最近一周</a></li>
+					 	                        <li><a class="dropdown-item" href="#">本月</a></li>
+					 	                    </ul>
+					 	                </div>
+
+					 	                <!-- 排序功能 -->
+					 	                <div class="dropdown">
+					 	                    <button class="btn btn-outline-secondary btn-sm dropdown-toggle"
+					 	                            type="button"
+					 	                            data-bs-toggle="dropdown">
+					 	                        <i class="bi bi-sort-down-alt me-2"></i>排序
+					 	                    </button>
+					 	                    <ul class="dropdown-menu dropdown-menu-end shadow">
+					 	                        <li><a class="dropdown-item" href="#">最新优先</a></li>
+					 	                        <li><a class="dropdown-item" href">文件大小</a></li>
+					 	                        <li><a class="dropdown-item" href">检测耗时</a></li>
+					 	                    </ul>
+					 	                </div>
+					 	            </div>
+					 	        </div>
+
+					 	        <!-- 增强型图片网格 -->
+					 	        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-5 g-3 g-md-4" id="imageGrid">
+					 	            <!-- 示例卡片 -->
+					 	            <div class="col">
+					 	                <div class="card h-100 border-1 shadow-sm hover-shadow transition-all">
+					 	                    <!-- 图片容器 -->
+					 	                    <div class="ratio ratio-4x3 bg-light-subtle overflow-hidden position-relative">
+					 	                        <!-- 主图 -->
+					 	                        <img src="assets/img/detect1.jpg"
+					 	                             class="card-img-top object-fit-cover hover-zoom"
+					 	                             alt="检测样本"
+					 	                             loading="lazy">
+
+					 	                        <!-- 悬浮层 -->
+					 	                        <div class="hover-overlay d-flex align-items-center justify-content-center">
+					 	                            <div class="text-center text-white">
+					 	                                <button class="btn btn-sm btn-light rounded-pill px-3">
+					 	                                    <i class="bi bi-arrows-angle-expand me-2"></i>查看详情
+					 	                                </button>
+					 	                                <div class="mt-2">
+					 	                                    <span class="badge bg-white text-dark me-1">
+					 	                                        <i class="bi bi-box-seam me-1"></i>YOLOv8
+					 	                                    </span>
+					 	                                    <span class="badge bg-white text-dark">
+					 	                                        <i class="bi bi-clock-history me-1"></i>0.45s
+					 	                                    </span>
+					 	                                </div>
+					 	                            </div>
+					 	                        </div>
+					 	                    </div>
+
+					 	                    <!-- 卡片正文 -->
+					 	                    <div class="card-body px-2 px-sm-3 py-2">
+					 	                        <div class="d-flex justify-content-between align-items-start">
+					 	                            <h6 class="card-title mb-0 flex-grow-1 pe-2">
+					 	                                <a href="#" class="text-decoration-none text-dark hover-primary">
+					 	                                    野生动物监测-东北虎
+					 	                                </a>
+					 	                            </h6>
+					 	                            <span class="badge bg-success bg-opacity-15 text-success fs-3">
+					 	                                <i class="bi bi-check2-circle me-1"></i>完成
+					 	                            </span>
+					 	                        </div>
+
+					 	                        <!-- 元数据 -->
+					 	                        <div class="d-flex justify-content-between align-items-center mt-2">
+					 	                            <small class="text-muted">
+					 	                                <i class="bi bi-calendar3 me-1"></i>09-01
+					 	                            </small>
+					 	                            <small class="text-muted">
+					 	                                <i class="bi bi-filetype-jpg me-1"></i>2.4MB
+					 	                            </small>
+					 	                        </div>
+					 	                    </div>
+					 	                </div>
+					 	            </div>
+					 	        </div>
+					 	    </div>
+					 	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </section>
+
+  <!-- ======= 底部 ======= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>客户服务</h3>
+          <ul class="list-unstyled">
+            <li><a href="#"><i class="bi bi-question-circle"></i> 帮助中心</a></li>
+            <li><a href="#"><i class="bi bi-shield-check"></i> 隐私政策</a></li>
+            <li><a href="#"><i class="bi bi-file-text"></i> 用户协议</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">© 2023 我的网站 版权所有</p>
+          <p>客服邮箱：support@example.com</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- 再引入html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script>
+	   const RET = {
+            OK: "0", // 成功
+            DBERR: "4001", // 数据库错误
+            NODATA: "4002", // 无数据
+            DATAEXIST: "4003", // 数据已存在
+            DATAERR: "4004", // 数据错误
+            SESSIONERR: "4101", // 用户未登录
+            LOGINERR: "4102", // 登录失败
+            PARAMERR: "4103", // 参数错误
+            USERERR: "4104", // 用户不存在或未激活
+            ROLEERR: "4105", // 用户身份错误
+            PWDERR: "4106", // 密码错误
+            REQERR: "4201", // 非法请求
+            IPERR: "4202", // IP受限
+            THIRDERR: "4301", // 第三方系统错误
+            IOERR: "4302", // 文件读写错误
+            SERVERERR: "4500", // 内部错误
+            UNKOWNERR: "4501", // 未知错误
+            REGISTERERR: "4503" // 注册失败
+        };
+
+        // 获取错误信息
+        function getErrorMessage(re_code) {
+            switch (re_code) {
+                case RET.DBERR: return '数据库错误，请稍后重试';
+                case RET.NODATA: return '无数据';
+                case RET.DATAEXIST: return '数据已存在';
+                case RET.DATAERR: return '数据错误';
+                case RET.SESSIONERR: return '用户未登录，请先登录';
+                case RET.LOGINERR: return '登录失败，请检查用户名和密码';
+                case RET.PARAMERR: return '参数错误，请检查输入';
+                case RET.USERERR: return '用户不存在或未激活';
+                case RET.ROLEERR: return '用户身份错误';
+                case RET.PWDERR: return '密码错误';
+                case RET.REQERR: return '非法请求';
+                case RET.IPERR: return 'IP受限';
+                case RET.THIRDERR: return '第三方系统错误';
+                case RET.IOERR: return '文件读写错误';
+                case RET.SERVERERR: return '服务器内部错误';
+                case RET.UNKOWNERR: return '未知错误';
+                case RET.REGISTERERR: return '注册失败';
+                default: return '未知错误';
+            }
+        }
+
+      function getCSRFToken() {
+        return document.cookie
+            .split('; ')
+            .find(row => row.startsWith('csrf_token='))
+            ?.split('=')[1] || '';
+      }
+	   
+	   // 导航切换控制
+	   document.querySelectorAll('.list-group-item').forEach(item => {
+	       item.addEventListener('click', function(e) {
+	           e.preventDefault();
+	           
+	           // 移除所有激活状态
+	           document.querySelectorAll('.list-group-item').forEach(i => i.classList.remove('active'));
+	           this.classList.add('active');
+	   
+	           // 隐藏所有内容区块
+	           document.querySelectorAll('.content-section').forEach(section => {
+	               section.classList.add('d-none');
+	           });
+	   
+	           // 显示目标区块
+	           const target = this.getAttribute('href').substring(1);
+	           const targetSection = document.getElementById(target + 'Section');
+	           if(targetSection) {
+	               targetSection.classList.remove('d-none');
+	               
+	               // 强制初始化图片网格（添加延迟确保DOM更新）
+	               if(target === 'orders') {
+	                   setTimeout(initImageGrid, 50);
+	               }
+	           }
+	       });
+	   });
+	   
+	   // 在全局范围创建模态框实例
+	   const detailModal = new bootstrap.Modal('#detailModal');
+	   
+	   document.addEventListener('click', function(e) {
+	     // 确保目标为元素节点
+	     const target = e.target.nodeType === 1 ? e.target : e.target.parentElement;
+	     
+	     // 使用安全选择器
+	     const card = target?.closest?.('.card.project-card'); // 可选链操作符
+	     
+	     if (card) {
+			 
+			  // 正确访问数据对象（移除数组包裹）
+			  const details = {
+			    project_name: "detect1",
+			    created_at: "2023-09-01 14:30",
+			    source_path: "assets/img/detect1.jpg",
+			    result_path: "assets/img/detect1.jpg", // 增加结果图字段
+			    conf_threshold: "0.5",
+			    ob_counts: "7",
+			    consumption_time: "0.3687279224395752",
+			    scale: "S",
+			    scenario: "multiscale"
+			  };
+
+	       fillProjectDetails(details);
+	   
+	       detailModal.show();
+	     }
+	   });
+	   //图片网格初始化
+	   function initImageGrid() {
+	       const grid = document.getElementById('imageGrid');
+	       grid.innerHTML = ''; // 清空现有内容
+	       
+	       const sampleData = [
+	         {
+	           source_path: "assets/img/detect1.jpg",
+	           project_name: "detect1",
+	           created_at: "2023-09-01 14:30",
+	         },
+	       ];
+		   
+		   const detail=[
+			   {
+				   project_name:"detect1",
+				   created_at: "2023-09-01 14:30",
+				   source_path: "assets/img/detect1.jpg",
+				   conf_threshold:"0.5",
+				   ob_counts:"7",
+				   consumption_time:"0.3687279224395752",
+				   scale:"S",
+				   scenario:"multiscale",
+			   }
+		   ];
+	   
+	       // 生成卡片（修正数据属性命名）
+	       sampleData.forEach((item) => {
+	           const col = document.createElement('div');
+	           col.className = 'col-12 col-md-6 col-lg-4';
+	           col.innerHTML = `
+	               <div class="card project-card h-100"
+	                   data-project-name="${item.project_name}">
+	                   <img src="${item.source_path}"
+	                       class="card-img-top object-fit-cover"
+	                       alt="${item.project_name}"
+	                       style="height: 200px">
+	                   <div class="card-body">
+	                       <h6 class="card-title mb-1">${item.project_name}</h6>
+	                       <p class="text-muted small mb-0">创建时间: ${item.created_at}</p>
+	                   </div>
+	               </div>
+	           `;
+	           grid.appendChild(col);
+	       });
+	   }
+		   
+	   function fillProjectDetails(details) {
+	       const ordersSection = document.getElementById('ordersSection');
+	       ordersSection.classList.remove('d-none'); // 显示项目信息区域
+	   
+	       // 填充图片及分辨率
+	       const originalImage = document.getElementById('originalImage');
+	       originalImage.src = details.source_path;
+	       originalImage.onload = function() { // 异步加载分辨率信息
+	           document.getElementById('originalResolution').textContent = 
+	               `${this.naturalWidth}x${this.naturalHeight}`;
+	       };
+	   
+	       // 填充统计信息
+		   document.getElementById('detectedImage').src = details.result_path;
+	       document.getElementById('project_name').textContent = details.project_name;
+	       document.getElementById('detailDate').textContent = details.created_at;
+	       document.getElementById('detailModel').textContent = details.scenario;
+	       document.getElementById('modelSize').textContent = details.scale;
+	       document.getElementById('conf_thresold').textContent = details.conf_threshold;
+	       document.getElementById('detailTotal').textContent = details.ob_counts; // 根据实际接口字段调整
+	       document.getElementById('detailTime').textContent = `${details.consumption_time}ms`; 
+	   
+	   }
+	   
+	   
+	   // 页面加载初始化（添加DOMContentLoaded监听）
+	   document.addEventListener('DOMContentLoaded', function() {
+	       // 初始化事件绑定
+	       if (window.location.hash === '#orders') {
+	           setTimeout(initImageGrid, 100); // 添加延迟确保DOM就绪
+	       }
+	       
+	       // 激活默认选项卡（添加错误处理）
+	       try {
+	           const defaultTab = document.querySelector('.list-group-item[href="#profile"]');
+	           if(defaultTab) {
+	               defaultTab.click();
+	               // 强制触发一次内容初始化
+	               document.dispatchEvent(new Event('click'));
+	           }
+	       } catch (e) {
+	           console.error('Tab initialization error:', e);
+	       }
+	   });
+	   
+	   // 修改后的下载PDF函数
+	   async function downloadPDF() {
+	     try {
+	       const { jsPDF } = window.jspdf;
+	       const doc = new jsPDF({
+	         orientation: "landscape",
+	         unit: "mm",
+	         format: "a4",
+	         compress: true
+	       });
+	   
+	       // 确保模态框内容可见
+	       const modalContent = document.querySelector('#detailModal .modal-content');
+	       if (!modalContent) {
+	         throw new Error('未找到模态框内容');
+	       }
+	   
+	       // 创建副本避免影响原内容
+	       const clone = modalContent.cloneNode(true);
+	       clone.style.width = "1600px";  // 确保内容展开
+	       clone.style.opacity = "1";     // 确保可见性
+	       document.body.appendChild(clone);
+	   
+	       // 转换为图片
+	       const canvas = await html2canvas(clone, {
+	         scale: 2,
+	         logging: true,
+	         useCORS: true,
+	         scrollY: -window.scrollY  // 修复滚动偏移
+	       });
+	       
+	       // 生成PDF
+	       const imgData = canvas.toDataURL('image/png');
+	       const imgWidth = 280; 
+	       const imgHeight = (canvas.height * imgWidth) / canvas.width;
+	       
+	       doc.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+	       doc.save(`detection_report_${Date.now()}.pdf`);
+	   
+	       // 清理克隆节点
+	       document.body.removeChild(clone);
+	       
+	     } catch (error) {
+	       console.error('生成PDF失败:', error);
+	       alert(`生成失败: ${error.message}`);
+	     }
+	   }
+
+	// 修改头像
+    document.addEventListener('DOMContentLoaded', function() {
+      const avatarLink = document.getElementById('avatar-link');
+      const avatarModal = new bootstrap.Modal(document.getElementById('avatarModal'));
+      const avatarUpload = document.getElementById('avatar-upload');
+      const avatarPreview = document.getElementById('avatar-preview');
+      const confirmBtn = document.getElementById('confirm-change');
+      const userAvatar = document.getElementById('user-avatar_2');
+
+      let selectedFile = null;
+
+      // 点击头像打开模态框
+      avatarLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        avatarModal.show();
+      });
+
+      // 文件选择处理
+      avatarUpload.addEventListener('change', function(event) {
+        const file = event.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+          selectedFile = file;
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            avatarPreview.src = e.target.result;
+            avatarPreview.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+        } else {
+          selectedFile = null;
+          avatarPreview.style.display = 'none';
+          alert('请选择有效的图片文件！');
+        }
+      });
+
+      // 确认更改头像
+      confirmBtn.addEventListener('click', function() {
+        if (selectedFile) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+			console.log('Updating avatar:', e.target.result); // 检查是否输出
+            userAvatar.src = e.target.result;
+            avatarModal.hide();
+            avatarPreview.style.display = 'none';
+            avatarUpload.value = '';
+            selectedFile = null;
+          };
+          reader.readAsDataURL(selectedFile);
+        } else {
+          alert('请先选择头像图片！');
+        }
+      });
+
+      // 模态框关闭时重置
+      document.getElementById('avatarModal').addEventListener('hidden.bs.modal', function() {
+        avatarPreview.style.display = 'none';
+        avatarUpload.value = '';
+        selectedFile = null;
+      });
+    });
+
+	// 修改密码
+	document.addEventListener('DOMContentLoaded', function() {
+	  const form = document.getElementById('passwordForm');
+	  const newPassword = document.getElementById('newPassword');
+	  const confirmPassword = document.getElementById('confirmPassword');
+	  const strengthBar = document.querySelector('.progress-bar');
+
+	  // 密码强度检测
+	  newPassword.addEventListener('input', function() {
+	    const strength = calculatePasswordStrength(this.value);
+	    strengthBar.style.width = strength.percentage + '%';
+	    strengthBar.style.backgroundColor = strength.color;
+	    document.querySelector('.password-strength small').textContent =
+	      `密码强度：${strength.text}`;
+	  });
+
+	  // 密码一致性验证
+	  confirmPassword.addEventListener('input', function() {
+	    const isValid = this.value === newPassword.value;
+	    this.classList.toggle('is-invalid', !isValid);
+	    this.classList.toggle('is-valid', isValid);
+	  });
+
+	  // 表单提交
+	  form.addEventListener('submit', function(e) {
+	    e.preventDefault();
+
+	    if (newPassword.value !== confirmPassword.value) {
+	      confirmPassword.classList.add('is-invalid');
+	      return;
+	    }
+
+	    // 这里添加实际的密码修改逻辑
+	    console.log('密码修改成功');
+	    bootstrap.Modal.getInstance(document.getElementById('changePasswordModal')).hide();
+
+	    // 显示成功提示
+	    showSuccessToast('密码修改成功');
+	  });
+
+	  function calculatePasswordStrength(password) {
+	    let strength = 0;
+	    if (password.match(/[a-z]/)) strength++;
+	    if (password.match(/[A-Z]/)) strength++;
+	    if (password.match(/[0-9]/)) strength++;
+	    if (password.match(/[^a-zA-Z0-9]/)) strength++;
+
+	    return {
+	      percentage: Math.min(strength * 25 + 25, 100),
+	      text: ['弱', '中', '强', '很强'][strength - 1] || '弱',
+	      color: ['#dc3545', '#ffc107', '#0d6efd', '#198754'][strength - 1] || '#dc3545'
+	    };
+	  }
+	});
+
+	// 显示成功提示（需要配合Toast组件）
+	function showSuccessToast(message) {
+	  const toast = new bootstrap.Toast(document.getElementById('successToast'));
+	  document.getElementById('toastMessage').textContent = message;
+	  toast.show();
+	}
+
+
+    //   图片网格初始化
+    // function initImageGrid() {
+    //     const csrfToken = getCSRFToken();
+    //     const grid = document.getElementById('imageGrid');
+    //     grid.innerHTML = ''; // 清空现有内容
+
+    //     // 从后端获取项目数据
+    //     fetch('/project', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'X-CSRF-TOKEN': csrfToken
+    //         },
+    //     })
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         if (data.re_code === RET.OK) {
+    //             // 生成卡片
+    //             data.projects.forEach((item) => {
+    //                 const col = document.createElement('div');
+    //                 col.className = 'col-12 col-md-6 col-lg-4';
+    //                 col.innerHTML = `
+    //                     <div class="card project-card h-100"
+    //                         data-project-name="${item.project_name}">
+    //                         <img src="${item.source_path}"
+    //                             class="card-img-top object-fit-cover"
+    //                             alt="${item.project_name}"
+    //                             style="height: 200px">
+    //                         <div class="card-body">
+    //                             <h6 class="card-title mb-1">${item.project_name}</h6>
+    //                             <p class="text-muted small mb-0">创建时间: ${item.created_at}</p>
+    //                         </div>
+    //                     </div>
+    //                 `;
+    //                 grid.appendChild(col);
+    //             });
+
+    //             // 绑定卡片点击事件
+    //             bindCardClickEvents();
+    //         } else {
+    //             console.error('Failed to load projects:', data.msg);
+    //         }
+    //     })
+    //     .catch(error => {
+    //         console.error('Error fetching projects:', error);
+    //     });
+    // }
+
+
+     
+    // 绑定卡片点击事件
+    function bindCardClickEvents() {
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const projectName = card.getAttribute('data-project-name');
+                console.log(projectName)
+                loadProjectDetails(projectName);
+            });
+        });
+    }
+
+    // 加载项目详细信息
+    function loadProjectDetails(projectName) {
+        const csrfToken = getCSRFToken();
+        fetch('/project/details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': csrfToken
+            },
+            body: JSON.stringify({ project_name: projectName }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.re_code === RET.OK) {
+                // 填充项目详细信息
+                fillProjectDetails(data.result);
+            } else {
+                console.error('Failed to load project details:', data.msg);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching project details:', error);
+        });
+    }
+	
+    // 页面加载时初始化卡片
+    document.addEventListener('DOMContentLoaded', initImageGrid);
+	
+	
+	const detectedResult={
+		"objects": [
+                {
+                    "cls": "airplane",
+                    "conf": 0.924579620361328,
+                    "coordinates": [
+                        170,
+                        143,
+                        278,
+                        244
+                    ]
+                },
+                {
+                    "cls": "airplane",
+                    "conf": 0.9231557250022888,
+                    "coordinates": [
+                        385,
+                        461,
+                        492,
+                        552
+                    ]
+                },
+                {
+                    "cls": "airplane",
+                    "conf": 0.9227100610733032,
+                    "coordinates": [
+                        19,
+                        117,
+                        153,
+                        261
+                    ]
+                },
+                {
+                    "cls": "airplane",
+                    "conf": 0.9167757630348206,
+                    "coordinates": [
+                        148,
+                        458,
+                        255,
+                        552
+                    ]
+                },
+                {
+                    "cls": "airplane",
+                    "conf": 0.915299654006958,
+                    "coordinates": [
+                        25,
+                        465,
+                        127,
+                        561
+                    ]
+                },
+                {
+                    "cls": "airplane",
+                    "conf": 0.908508837223053,
+                    "coordinates": [
+                        199,
+                        648,
+                        306,
+                        738
+                    ]
+                },
+                {
+                    "cls": "airplane",
+                    "conf": 0.8166483640670776,
+                    "coordinates": [
+                        367,
+                        7,
+                        423,
+                        72
+                    ]
+                },
+				{
+				    "cls": "airplane",
+				    "conf": 0.8166483640670776,
+				    "coordinates": [
+				        367,
+				        7,
+				        423,
+				        72
+				    ]
+				},
+				{
+				    "cls": "airplane",
+				    "conf": 0.8166483640670776,
+				    "coordinates": [
+				        367,
+				        7,
+				        423,
+				        72
+				    ]
+				},
+				{
+				    "cls": "airplane",
+				    "conf": 0.8166483640670776,
+				    "coordinates": [
+				        367,
+				        7,
+				        423,
+				        72
+				    ]
+				},
+				{
+				    "cls": "airplane",
+				    "conf": 0.8166483640670776,
+				    "coordinates": [
+				        367,
+				        7,
+				        423,
+				        72
+				    ]
+				},
+				{
+				    "cls": "airplane",
+				    "conf": 0.8166483640670776,
+				    "coordinates": [
+				        367,
+				        7,
+				        423,
+				        72
+				    ]
+				}
+            ],
+        };
+		
+	const formContent = document.getElementById('form-content');
+	// 直接解析数据并插入表格行
+	detectedResult.objects.forEach((obj, index) => {
+	  const row = document.createElement('tr');
+	  row.innerHTML = `
+	    <td>${index + 1}</td>
+	    <td>${obj.cls}</td>
+	    <td>(${obj.coordinates.join(', ')})</td>
+	    <td>${(obj.conf * 100).toFixed(2)}%</td>
+	  `;
+	  formContent.appendChild(row);
+	});
+		
+	
+	             
+	             
+  </script>
+</body>
+
+</html>
